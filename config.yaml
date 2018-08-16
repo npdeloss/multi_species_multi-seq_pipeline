@@ -1,0 +1,3 @@
+targets:
+    local:
+        - 'genomes/human/grch38/genome.chrom.sizes'

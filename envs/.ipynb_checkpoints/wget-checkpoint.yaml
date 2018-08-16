@@ -1,0 +1,4 @@
+channels:
+ - defaults
+dependencies:
+ - wget=1.19.5
