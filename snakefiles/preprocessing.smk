@@ -20,9 +20,9 @@ compression_suffix = config['reads']['compression_suffix']
 preprocessing_fastp_prefix = config['preprocessing']['fastp']['prefix']
 preprocessing_fastp_paired_end_options = config['preprocessing']['fastp']['paired_end']['options']
 adapter_r1 = config['preprocessing']['fastp']['paired_end']['adapter_r1']
-adapter_r1_option = f'--adapter_sequence {adapter_r1}' if adapter_r1 is not ''
+adapter_r1_option = f'--adapter_sequence {adapter_r1}' if adapter_r1 != '' else ''
 adapter_r2 = config['preprocessing']['fastp']['paired_end']['adapter_r1']
-adapter_r2_option = f'--adapter_sequence_r2 {adapter_r2}' if adapter_r2 is not ''
+adapter_r2_option = f'--adapter_sequence_r2 {adapter_r2}' if adapter_r2 != '' else ''
 preprocessing_fastp_paired_end_options = f'{preprocessing_fastp_paired_end_options} {adapter_r1_option} {adapter_r2_option}'
 
 # Construct options string for single end processing
