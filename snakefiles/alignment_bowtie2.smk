@@ -45,7 +45,7 @@ rule index_bowtie2:
         """
         mkdir -p $(dirname {output})
         bowtie2-build \
-        {params.options}
+        {params.options} \
         {input.genome_fa} \
         $(dirname {output})/$(basename {output} .1.bt2) \
         &> {log}
