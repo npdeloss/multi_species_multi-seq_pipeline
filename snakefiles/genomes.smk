@@ -37,11 +37,21 @@ rule download_annotation:
         wget -O {output} -o {log} {params.url}
         """
 
-rule decompress_reference_file:
+rule decompress_genoma_fa:
     input:
-        prefix+'{organism}/{reference}/downloads/{basename}.gz'
+        prefix+'{organism}/{reference}/downloads/genome.fa.gz'
     output:
-        prefix+'{organism}/{reference}/{basename}'
+        prefix+'{organism}/{reference}/genome.fa'
+    shell:
+        """
+        zcat {input} > {output}
+        """
+
+rule decompress_annotation_gtf:
+    input:
+        prefix+'{organism}/{reference}/downloads/annotation.gtf.gz'
+    output:
+        prefix+'{organism}/{reference}/annotation.gtf.fa'
     shell:
         """
         zcat {input} > {output}
