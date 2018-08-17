@@ -74,7 +74,7 @@ rule preprocessing_fastp_single_end:
     input:
         reads1 = reads_prefix + '{basename}' + reads1_suffix + fastq_suffix + compression_suffix
     output:
-        reads1 = preprocessing_fastp_prefix + '{basename}' + reads1_suffix + fastq_suffix + compression_suffix
+        reads1 = preprocessing_fastp_prefix + '{basename}' + reads1_suffix + fastq_suffix + compression_suffix,
         html = preprocessing_fastp_prefix + '{basename}' + '.html',
         json = preprocessing_fastp_prefix + '{basename}' + '.json'
     log:
