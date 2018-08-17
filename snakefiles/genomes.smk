@@ -1,3 +1,7 @@
+configfile: 'configs/wildcard_constraints.yaml'
+wildcard_constraints:
+    **config['wildcard_constraints']
+
 # Import genome default configuration
 configfile: 'configs/genomes.yaml'
 
