@@ -1,0 +1,28 @@
+alignment:
+    spliced: 'star'
+    unspliced: 'bowtie2'
+    input_prefix: ''
+    sort:
+        threads: 8
+        params:
+            options: '-l 9 -m 4G'
+    star:
+        prefix: 'alignment_star/{organism}/{reference}/'
+        input_prefix: 'preprocessing_fastp/'
+        threads: 8
+        read_files_command: 'zcat'
+        index:
+            prefix: 'genomes/{organism}/{reference}/star/'
+            input_prefix: 'genomes/{organism}/{reference}/'
+            threads: 4
+            params:
+                options: ''
+        paired_end:
+            params:
+                options: '--twopassMode Basic --outBAMcompression 9 --outSAMunmapped Within --outReadsUnmapped Fastx'
+        single_end:
+            params:
+                options: '--twopassMode Basic --outBAMcompression 9 --outSAMunmapped Within --outReadsUnmapped Fastx'
+            
+            
+    

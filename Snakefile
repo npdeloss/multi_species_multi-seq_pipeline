@@ -1,4 +1,7 @@
-include: 'snakefiles/genomes.rules'
+include: 'snakefiles/genomes.smk'
+include: 'snakefiles/preprocessing.smk'
+include: 'snakefiles/qc.smk'
+include: 'snakefiles/alignment.smk'
 
 configfile: 'config.yaml'
 

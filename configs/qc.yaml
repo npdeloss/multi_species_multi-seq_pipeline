@@ -1,0 +1,6 @@
+qc:
+    fastqc:
+        prefix: 'qc_fastqc/'
+        input_prefix: 'preprocessing_fastp/'
+        threads: 1
+        

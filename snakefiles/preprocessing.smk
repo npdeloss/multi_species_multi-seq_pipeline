@@ -35,21 +35,22 @@ preprocessing_fastp_single_end_options = f'{preprocessing_fastp_single_end_optio
 
 preprocessing_fastp_threads = config['preprocessing']['fastp']['threads']
 
+# Paired end
 rule preprocessing_fastp_paired_end:
     input:
-        reads1 = reads_prefix+'{basename}'+reads1_suffix+fastq_suffix+compression_suffix,
-        reads2 = reads_prefix+'{basename}'+reads2_suffix+fastq_suffix+compression_suffix
+        reads1 = reads_prefix + '{basename}' + reads1_suffix + fastq_suffix + compression_suffix,
+        reads2 = reads_prefix + '{basename}' + reads2_suffix + fastq_suffix + compression_suffix
     output:
-        reads1 = preprocessing_fastp_prefix+'{basename}'+reads1_suffix+fastq_suffix+compression_suffix,
-        reads2 = preprocessing_fastp_prefix+'{basename}'+reads2_suffix+fastq_suffix+compression_suffix,
-        html = preprocessing_fastp_prefix+'{basename}'+'.html',
-        json = preprocessing_fastp_prefix+'{basename}'+'.json'
+        reads1 = preprocessing_fastp_prefix + '{basename}' + reads1_suffix + fastq_suffix + compression_suffix,
+        reads2 = preprocessing_fastp_prefix + '{basename}' + reads2_suffix + fastq_suffix + compression_suffix,
+        html = preprocessing_fastp_prefix + '{basename}' + '.html',
+        json = preprocessing_fastp_prefix + '{basename}' + '.json'
     log:
-        preprocessing_fastp_prefix+'{basename}'+'.log'
-    params:
-        options = preprocessing_fastp_paired_end_options
+        preprocessing_fastp_prefix + '{basename}' + '.log'
     threads:
         preprocessing_fastp_threads
+    params:
+        options = preprocessing_fastp_paired_end_options
     conda:
         '../envs/fastp.yaml'
     shell:
@@ -68,19 +69,20 @@ rule preprocessing_fastp_paired_end:
         &> {log}
         """
 
+# Single end
 rule preprocessing_fastp_single_end:
     input:
-        reads1 = reads_prefix+'{basename}'+reads1_suffix+fastq_suffix+compression_suffix
+        reads1 = reads_prefix + '{basename}' + reads1_suffix + fastq_suffix + compression_suffix
     output:
-        reads1 = preprocessing_fastp_prefix+'{basename}'+reads1_suffix+fastq_suffix+compression_suffix
-        html = preprocessing_fastp_prefix+'{basename}'+'.html',
-        json = preprocessing_fastp_prefix+'{basename}'+'.json'
+        reads1 = preprocessing_fastp_prefix + '{basename}' + reads1_suffix + fastq_suffix + compression_suffix
+        html = preprocessing_fastp_prefix + '{basename}' + '.html',
+        json = preprocessing_fastp_prefix + '{basename}' + '.json'
     log:
-        preprocessing_fastp_prefix+'{basename}'+'.log'
-    params:
-        options = preprocessing_fastp_paired_end_options
+        preprocessing_fastp_prefix + '{basename}' + '.log'
     threads:
         preprocessing_fastp_threads
+    params:
+        options = preprocessing_fastp_paired_end_options
     conda:
         '../envs/fastp.yaml'
     shell:
