@@ -96,7 +96,7 @@ rule alignment_bowtie2_paired_end:
 rule alignment_bowtie2_single_end:
     input:
         reads1 = alignment_bowtie2_input_prefix + '{basename}' + reads1_suffix + fastq_suffix + compression_suffix,
-        index = index_bowtie2_prefix + 'index.1.bt2'x
+        index = index_bowtie2_prefix + 'index.1.bt2'
     output:
         bam = alignment_bowtie2_prefix + '{basename}/Aligned.out.bam'
     log:
