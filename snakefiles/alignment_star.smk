@@ -34,7 +34,6 @@ rule index_star:
     threads:
         index_star_threads
     params:
-        read_files_command = 
         options = index_star_params_options
     conda:
         '../envs/star.yaml'
@@ -61,14 +60,14 @@ rule alignment_star_paired_end:
         reads2 = alignment_star_input_prefix + '{basename}' + reads2_suffix + fastq_suffix + compression_suffix,
         index = alignment_star_prefix + 'Genome'
     output:
-        bam = alignment_star_prefix + '{basename}/Aligned.out.bam'
+        bam = alignment_star_prefix + '{basename}/Aligned.out.bam',
         counts = alignment_star_prefix + '{basename}/ReadsPerGene.out.tab'
     log:
         alignment_star_prefix + '{basename}.log'
     threads:
         alignment_star_threads
     params:
-        read_files_command = alignment_star_read_files_command
+        read_files_command = alignment_star_read_files_command,
         options = alignment_star_paired_end_params_options
     conda:
         '../envs/star.yaml'
@@ -94,14 +93,14 @@ rule alignment_star_single_end:
         reads1 = alignment_star_input_prefix + '{basename}' + reads1_suffix + fastq_suffix + compression_suffix,
         index = alignment_star_prefix + 'Genome'
     output:
-        bam = alignment_star_prefix + '{basename}/Aligned.out.bam'
+        bam = alignment_star_prefix + '{basename}/Aligned.out.bam',
         counts = alignment_star_prefix + '{basename}/ReadsPerGene.out.tab'
     log:
         alignment_star_prefix + '{basename}.log'
     threads:
         alignment_star_threads
     params:
-        read_files_command = alignment_star_read_files_command
+        read_files_command = alignment_star_read_files_command,
         options = alignment_star_single_end_params_options
     conda:
         '../envs/star.yaml'
