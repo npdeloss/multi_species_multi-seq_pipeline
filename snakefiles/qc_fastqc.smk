@@ -1,4 +1,3 @@
-
 # Import naming conventions for reads as variables
 reads1_suffix = config['reads']['reads1_suffix']
 reads2_suffix = config['reads']['reads2_suffix']
@@ -13,7 +12,7 @@ rule qc_fastqc:
     input:
         reads = qc_fastqc_input_prefix + '{basename_and_read_suffix}' + fastq_suffix + compression_suffix
     output:
-        html = qc_fastqc_prefix + '{basename_and_read_suffix}_fastqc.html'
+        html = qc_fastqc_prefix + '{basename_and_read_suffix}_fastqc.html',
         zip = qc_fastqc_prefix + '{basename_and_read_suffix}_fastqc.zip'
     log:
         qc_fastqc_prefix + '{basename_and_read_suffix}_fastqc.log'
