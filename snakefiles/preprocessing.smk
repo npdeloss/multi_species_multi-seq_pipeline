@@ -28,7 +28,7 @@ preprocessing_fastp_paired_end_options = f'{preprocessing_fastp_paired_end_optio
 # Construct options string for single end processing
 preprocessing_fastp_single_end_options = config['preprocessing']['fastp']['single_end']['options']
 adapter = config['preprocessing']['fastp']['single_end']['adapter']
-adapter_option = f'-a {adapter_r1}' if adapter is not ''
+adapter_option = f'-a {adapter_r1}' if adapter != '' else ''
 preprocessing_fastp_single_end_options = f'{preprocessing_fastp_single_end_options} {adapter_option}'
 
 # Import number of threads
