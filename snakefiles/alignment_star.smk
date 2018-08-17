@@ -15,7 +15,7 @@ index_star_params_options = config['alignment']['star']['index']['params']['opti
 ## Alignment
 alignment_star_threads = config['alignment']['star']['threads']
 alignment_star_prefix = config['alignment']['star']['prefix']
-alignment_star_input_prefix = config['alignment']['input_prefix']
+alignment_star_input_prefix = config['alignment']['star']['input_prefix']
 alignment_star_read_files_command = config['alignment']['star']['read_files_command']
 
 ### Paired end
