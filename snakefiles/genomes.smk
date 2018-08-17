@@ -51,7 +51,7 @@ rule decompress_annotation_gtf:
     input:
         prefix+'{organism}/{reference}/downloads/annotation.gtf.gz'
     output:
-        prefix+'{organism}/{reference}/annotation.gtf.fa'
+        prefix+'{organism}/{reference}/annotation.gtf'
     shell:
         """
         zcat {input} > {output}
