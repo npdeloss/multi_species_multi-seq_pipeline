@@ -1,7 +1,6 @@
 alignment:
     spliced: 'star'
     unspliced: 'bowtie2'
-    input_prefix: ''
     sort:
         threads: 8
         params:
@@ -23,6 +22,19 @@ alignment:
         single_end:
             params:
                 options: '--twopassMode Basic --outBAMcompression 9 --outSAMunmapped Within --outReadsUnmapped Fastx'
-            
-            
-    
+    bowtie2:
+        prefix: 'alignment_bowtie2/{organism}/{reference}/'
+        input_prefix: 'preprocessing_fastp/'
+        threads: 8
+        index:
+            prefix: 'genomes/{organism}/{reference}/bowtie2/'
+            input_prefix: 'genomes/{organism}/{reference}/'
+            threads: 1
+            params:
+                options: ''
+        paired_end:
+            params:
+                options: ''
+        single_end:
+            params:
+                options: ''

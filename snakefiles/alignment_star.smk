@@ -5,7 +5,7 @@ reads2_suffix = config['reads']['reads2_suffix']
 fastq_suffix = config['reads']['fastq_suffix']
 compression_suffix = config['reads']['compression_suffix']
 
-# Import prefixes for input and output
+# Import configuration options
 ## Indexing
 index_star_prefix = config['alignment']['star']['index']['prefix']
 index_star_input_prefix = config['alignment']['star']['index']['input_prefix']
@@ -20,7 +20,13 @@ alignment_star_read_files_command = config['alignment']['star']['read_files_comm
 
 ### Paired end
 alignment_star_paired_end_params_options = config['alignment']['star']['paired_end']['params']['options']
+
+## Single end
 alignment_star_single_end_params_options = config['alignment']['star']['single_end']['params']['options']
+
+## Sorting alignment
+alignment_sort_threads = config['alignment']['sort']['threads']
+alignment_sort_params_options = config['alignment']['sort']['params']['options']
 
 # Index genome
 rule index_star:
@@ -28,9 +34,9 @@ rule index_star:
         genome_fa = index_star_input_prefix + 'genome.fa',
         annotation_gtf = index_star_input_prefix + 'annotation.gtf',
     output:
-        alignment_star_prefix + 'Genome'
+        index_star_prefix + 'Genome'
     log:
-        alignment_star_prefix + 'index_star.log'
+        index_star_prefix + 'index_star.log'
     threads:
         index_star_threads
     params:
@@ -121,8 +127,6 @@ rule alignment_star_single_end:
         """
 
 # Sort alignment
-alignment_sort_threads = config['alignment']['sort']['threads']
-alignment_sort_params_options = config['alignment']['sort']['params']['options']
 
 rule alignment_star_sort_bam:
     input:
