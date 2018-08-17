@@ -34,7 +34,7 @@ alignment:
                 options: '--seed 1234'
         paired_end:
             params:
-                options: '-q --very_sensitive_local -N 1'
+                options: '-q --very-sensitive-local -N 1'
         single_end:
             params:
-                options: '-q --very_sensitive_local -N 1'
+                options: '-q --very-sensitive-local -N 1'
