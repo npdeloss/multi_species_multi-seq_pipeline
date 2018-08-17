@@ -84,7 +84,7 @@ rule alignment_star_paired_end:
         mkdir -p $outdir
         STAR \
         --runThreadN {threads} \
-        --genomeDir {input.index} \
+        --genomeDir $(dirname {input.index}) \
         --readFilesIn {input.reads1} {input.reads2} \
         --readFilesCommand {params.read_files_command} \
         --outSAMtype BAM Unsorted \
@@ -117,7 +117,7 @@ rule alignment_star_single_end:
         mkdir -p $outdir
         STAR \
         --runThreadN {threads} \
-        --genomeDir {input.index} \
+        --genomeDir $(dirname {input.index}) \
         --readFilesIn {input.reads1} \
         --readFilesCommand {params.read_files_command} \
         --outSAMtype BAM Unsorted \
