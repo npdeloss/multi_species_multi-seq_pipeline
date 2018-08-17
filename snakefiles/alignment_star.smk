@@ -26,7 +26,7 @@ alignment_star_single_end_params_options = config['alignment']['star']['single_e
 rule index_star:
     input:
         genome_fa = index_star_input_prefix + 'genome.fa',
-        annotation_gtf = index_star_input_prefix + 'annotation_gtf',
+        annotation_gtf = index_star_input_prefix + 'annotation.gtf',
     output:
         alignment_star_prefix + 'Genome'
     log:
