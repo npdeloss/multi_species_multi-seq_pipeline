@@ -4,4 +4,4 @@ configfile: 'configs/reads.yaml'
 configfile: 'configs/alignment.yaml'
 
 include: 'alignment_star.smk'
-# include: 'alignment_bowtie2.smk'
+include: 'alignment_bowtie2.smk'

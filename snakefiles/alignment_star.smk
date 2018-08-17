@@ -45,14 +45,15 @@ rule index_star:
         '../envs/star.yaml'
     shell:
         """
-        mkdir -p  $(dirname {output})
+        outdir=$(dirname {output})
+        mkdir -p  $outdir
         STAR \
         --runThreadN {threads} \
         --runMode genomeGenerate \
         --genomeDir {output} \
         --genomeFastaFiles {input.genome_fa} \
         --sjdbGTFfile {input.annotation_gtf} \
-        --outFileNamePrefix {output}/ \
+        --outFileNamePrefix $outdir/ \
         --outStd Log &> {log}
         """
 

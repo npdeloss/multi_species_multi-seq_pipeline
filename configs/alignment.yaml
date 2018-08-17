@@ -31,10 +31,10 @@ alignment:
             input_prefix: 'genomes/{organism}/{reference}/'
             threads: 1
             params:
-                options: ''
+                options: '--seed 1234'
         paired_end:
             params:
-                options: ''
+                options: '-q --very_sensitive_local -N 1'
         single_end:
             params:
-                options: ''
+                options: '-q --very_sensitive_local -N 1'
