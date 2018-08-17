@@ -1,5 +1,5 @@
 targets:
     local:
         - 'genomes/human/grch38/genome.chrom.sizes'
-        - 'alignment_star/human/grch38/human_htbe_chip_h3k27ac-h5n1-0h-rep1_MC.bam.bai'
-        - 'alignment_star/human/grch38/human_htbe_rna_total-h5n1-0h-rep1_MC.bam.bai'
+        - 'alignment_star/human/grch38/human_htbe_chip_h3k27ac-h5n1-0h-rep1_MC.sorted.bam.bai'
+        - 'alignment_star/human/grch38/human_htbe_rna_total-h5n1-0h-rep1_MC.sorted.bam.bai'
