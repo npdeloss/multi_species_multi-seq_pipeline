@@ -42,7 +42,7 @@ rule index_bowtie2:
     conda:
         '../envs/bowtie2.yaml'
     shell:
-		"""
+        """
         mkdir -p $(dirname {output})
         bowtie2-build \
         {params.options}
