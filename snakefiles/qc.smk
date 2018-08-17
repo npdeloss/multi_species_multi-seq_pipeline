@@ -6,4 +6,4 @@ configfile: 'configs/qc.yaml'
 # Import user configuration
 configfile: 'config.yaml'
 
-include: 'snakefiles/qc_fastqc.smk'
+include: 'qc_fastqc.smk'
