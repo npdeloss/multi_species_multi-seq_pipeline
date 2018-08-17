@@ -50,7 +50,7 @@ rule index_star:
         STAR \
         --runThreadN {threads} \
         --runMode genomeGenerate \
-        --genomeDir {output} \
+        --genomeDir $outdir/ \
         --genomeFastaFiles {input.genome_fa} \
         --sjdbGTFfile {input.annotation_gtf} \
         --outFileNamePrefix $outdir/ \
