@@ -103,7 +103,6 @@ rule alignment_bowtie2_single_end:
     threads:
         alignment_bowtie2_threads
     params:
-        read_files_command = alignment_bowtie2_read_files_command,
         options = alignment_bowtie2_paired_end_params_options
     conda:
         '../envs/bowtie2.yaml'
