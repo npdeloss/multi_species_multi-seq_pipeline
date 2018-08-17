@@ -64,7 +64,7 @@ rule alignment_star_paired_end:
     input:
         reads1 = alignment_star_input_prefix + '{basename}' + reads1_suffix + fastq_suffix + compression_suffix,
         reads2 = alignment_star_input_prefix + '{basename}' + reads2_suffix + fastq_suffix + compression_suffix,
-        index = alignment_star_prefix + 'Genome'
+        index = index_star_prefix + 'Genome'
     output:
         bam = alignment_star_prefix + '{basename}/Aligned.out.bam',
         counts = alignment_star_prefix + '{basename}/ReadsPerGene.out.tab'
@@ -97,7 +97,7 @@ rule alignment_star_paired_end:
 rule alignment_star_single_end:
     input:
         reads1 = alignment_star_input_prefix + '{basename}' + reads1_suffix + fastq_suffix + compression_suffix,
-        index = alignment_star_prefix + 'Genome'
+        index = index_star_prefix + 'Genome'
     output:
         bam = alignment_star_prefix + '{basename}/Aligned.out.bam',
         counts = alignment_star_prefix + '{basename}/ReadsPerGene.out.tab'
