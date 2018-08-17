@@ -1,0 +1,12 @@
+preprocessing:
+    prefix: 'preprocessing_fastp'
+    fastp:
+        prefix: 'preprocessing_fastp'
+        threads: 1
+        paired_end:
+            adapter_r1: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+            adapter_r2: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT'
+            options: ''
+        single_end:
+            adapter: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+            options: ''

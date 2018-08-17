@@ -1,4 +1,5 @@
 genomes:
+    prefix: 'genomes/'
     human:
         grch38:
             genome_fa:

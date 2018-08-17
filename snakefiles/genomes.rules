@@ -4,14 +4,16 @@ configfile: 'configs/genomes.yaml'
 # Import user configuration
 configfile: 'config.yaml'
 
+prefix = config['genomes']['prefix']
+
 # Download and decompress reference files
 rule download_genome:
     output:
-        'genomes/{organism}/{reference}/downloads/genome.fa.gz'
+        prefix+'{organism}/{reference}/downloads/genome.fa.gz'
     params:
         url = lambda wildcards: config['genomes'][wildcards.organism][wildcards.reference]['genome_fa']['url']
     log:
-        'genomes/{organism}/{reference}/downloads/genome.fa.gz.log'
+        prefix+'{organism}/{reference}/downloads/genome.fa.gz.log'
     conda:
         '../envs/wget.yaml'
     shell:
@@ -22,7 +24,7 @@ rule download_genome:
 
 rule download_annotation:
     output:
-        'genomes/{organism}/{reference}/downloads/annotation.gtf.gz'
+        prefix+'{organism}/{reference}/downloads/annotation.gtf.gz'
     params:
         url = lambda wildcards: config['genomes'][wildcards.organism][wildcards.reference]['annotation_gtf']['url']
     log:
@@ -37,9 +39,9 @@ rule download_annotation:
 
 rule decompress_reference_file:
     input:
-        'genomes/{organism}/{reference}/downloads/{basename}.gz'
+        prefix+'{organism}/{reference}/downloads/{basename}.gz'
     output:
-        'genomes/{organism}/{reference}/{basename}'
+        prefix+'{organism}/{reference}/{basename}'
     shell:
         """
         zcat {input} > {output}
@@ -48,9 +50,9 @@ rule decompress_reference_file:
 # Index Genome
 rule index_genome:
     input:
-        'genomes/{organism}/{reference}/genome.fa'
+        prefix+'{organism}/{reference}/genome.fa'
     output:
-        'genomes/{organism}/{reference}/genome.fa.fai'
+        prefix+'{organism}/{reference}/genome.fa.fai'
     conda:
         '../envs/samtools.yaml'
     shell:
@@ -60,9 +62,9 @@ rule index_genome:
 
 rule chrom_size_genome:
     input:
-        'genomes/{organism}/{reference}/genome.fa.fai'
+        prefix+'{organism}/{reference}/genome.fa.fai'
     output:
-        'genomes/{organism}/{reference}/genome.chrom.sizes'
+        prefix+'{organism}/{reference}/genome.chrom.sizes'
     shell:
         """
         cut -f1,2 {input} > {output}
@@ -71,11 +73,11 @@ rule chrom_size_genome:
 # Index Annotation
 rule bgzip_annotation:
     input:
-        'genomes/{organism}/{reference}/annotation.gtf'
+        prefix+'{organism}/{reference}/annotation.gtf'
     output:
-        'genomes/{organism}/{reference}/annotation.gtf.gz'
+        prefix+'{organism}/{reference}/annotation.gtf.gz'
     log:
-        'genomes/{organism}/{reference}/annotation.gtf.gz.log'
+        prefix+'{organism}/{reference}/annotation.gtf.gz.log'
     conda:
         '../envs/tabix.yaml'
     shell:
@@ -90,11 +92,11 @@ rule bgzip_annotation:
 
 rule tabix_annotation:
     input:
-        'genomes/{organism}/{reference}/annotation.gtf.gz'
+        prefix+'{organism}/{reference}/annotation.gtf.gz'
     output:
-        'genomes/{organism}/{reference}/annotation.gtf.gz.tbi'
+        prefix+'{organism}/{reference}/annotation.gtf.gz.tbi'
     log:
-        'genomes/{organism}/{reference}/annotation.gtf.gz.tbi.log'
+        prefix+'{organism}/{reference}/annotation.gtf.gz.tbi.log'
     conda:
         '../envs/tabix.yaml'
     shell:

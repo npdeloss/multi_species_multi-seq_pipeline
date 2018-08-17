@@ -1,0 +1,6 @@
+reads:
+    prefix: 'reads_fastq/'
+    reads1_suffix: '_R1_001'
+    reads2_suffix: '_R2_001'
+    fastq_suffix: '.fastq'
+    compression_suffix: '.gz'
