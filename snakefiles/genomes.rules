@@ -13,7 +13,7 @@ rule download_genome:
     log:
         'genomes/{organism}/{reference}/downloads/genome.fa.gz.log'
     conda:
-        'envs/wget.yaml'
+        '../envs/wget.yaml'
     shell:
         """
         mkdir -p $(dirname {output})
@@ -28,7 +28,7 @@ rule download_annotation:
     log:
         'genomes/{organism}/{reference}/downloads/annotation.gtf.gz.log'
     conda:
-        'envs/wget.yaml'
+        '../envs/wget.yaml'
     shell:
         """
         mkdir -p $(dirname {output})
@@ -52,7 +52,7 @@ rule index_genome:
     output:
         'genomes/{organism}/{reference}/genome.fa.fai'
     conda:
-        'envs/samtools.yaml'
+        '../envs/samtools.yaml'
     shell:
         """
         samtools faidx {input}
@@ -77,7 +77,7 @@ rule bgzip_annotation:
     log:
         'genomes/{organism}/{reference}/annotation.gtf.gz.log'
     conda:
-        'envs/tabix.yaml'
+        '../envs/tabix.yaml'
     shell:
         """
         (cat {input} \
@@ -96,7 +96,7 @@ rule tabix_annotation:
     log:
         'genomes/{organism}/{reference}/annotation.gtf.gz.tbi.log'
     conda:
-        'envs/tabix.yaml'
+        '../envs/tabix.yaml'
     shell:
         """
         sleep 5s
