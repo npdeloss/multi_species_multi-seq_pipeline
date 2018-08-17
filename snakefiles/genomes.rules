@@ -80,11 +80,11 @@ rule bgzip_annotation:
         'envs/tabix.yaml'
     shell:
         """
-        cat {input} \
+        (cat {input} \
         | grep -v '^#' \
         | sort -k1,1 -k4,4n \
         | bgzip -c \
-        > {output} \
+        > {output}) \
         2> {log}
         """
 

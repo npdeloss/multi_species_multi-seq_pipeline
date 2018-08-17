@@ -1,4 +1,4 @@
-include: 'genomes.rules'
+include: 'snakefiles/genomes.rules'
 
 configfile: 'config.yaml'
 
