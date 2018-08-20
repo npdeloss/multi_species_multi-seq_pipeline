@@ -6,6 +6,7 @@ include: 'snakefiles/genomes.smk'
 include: 'snakefiles/preprocessing.smk'
 include: 'snakefiles/qc.smk'
 include: 'snakefiles/alignment.smk'
+include: 'snakefiles/tag_directories.smk'
 
 configfile: 'config.yaml'
 
