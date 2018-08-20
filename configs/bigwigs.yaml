@@ -1,7 +1,7 @@
 bigwigs:
     homer:
         prefix: 'bigwigs_homer/{organism}/{reference}/'
-        input_prefix: 'tag_directories_homer/{organism}/{reference}/'
+        input_prefix: 'tag_directories/{organism}/{reference}/'
         genome_prefix: 'genomes/{organism}/{reference}/'
         params:
             options: '-fsize 1e20'
