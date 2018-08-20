@@ -36,6 +36,8 @@ rule tag_directories_homer_paired_end:
         tag_directories_prefix + basename_pattern + '.log'
     params:
         options = lambda wildcards: tag_directories_options_by_library_type[wildcards.library_type]['paired_end']
+    shadow:
+        'shallow'
     conda:
         '../envs/homer.yaml'
     shell:
@@ -53,6 +55,8 @@ rule tag_directories_homer_single_end:
         tag_directories_prefix + basename_pattern + '.log'
     params:
         options = lambda wildcards: tag_directories_options_by_library_type[wildcards.library_type]['single_end']
+    shadow:
+        'shallow'
     conda:
         '../envs/homer.yaml'
     shell:

@@ -6,3 +6,4 @@ wildcard_constraints:
     cell_type: '[^\/_]+'
     description: '[^\/_]+'
     initials: '[^\/_]+'
+    strand: '[A-Za-z0-9]+'

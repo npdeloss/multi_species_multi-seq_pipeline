@@ -7,6 +7,7 @@ include: 'snakefiles/preprocessing.smk'
 include: 'snakefiles/qc.smk'
 include: 'snakefiles/alignment.smk'
 include: 'snakefiles/tag_directories.smk'
+include: 'snakefiles/bigwigs.smk'
 
 configfile: 'config.yaml'
 
