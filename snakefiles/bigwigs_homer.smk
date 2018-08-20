@@ -11,6 +11,8 @@ bigwigs_homer_input_prefix = config['bigwigs']['homer']['input_prefix']
 bigwigs_homer_genome_prefix = config['bigwigs']['homer']['genome_prefix']
 bigwigs_homer_options = config['bigwigs']['homer']['params']['options']
 
+ruleorder: bigwigs_homer > bigwigs_homer_alias_both
+
 rule bigwigs_homer:
     input:
         tag_info = bigwigs_homer_input_prefix + '{basename}/tagInfo.txt',
