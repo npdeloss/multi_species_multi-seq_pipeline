@@ -28,7 +28,7 @@ ruleorder: tag_directories_homer_paired_end > tag_directories_homer_single_end
 
 rule tag_directories_homer_paired_end:
     input:
-        bam = lambda wildcards: tag_directories_input_prefix_by_library_type[wildcards.library_type]['paired_end'] + basename_pattern + '.sorted.bam',
+        bam = lambda wildcards: tag_directories_input_prefix_by_library_type[wildcards.library_type]['paired_end'] + basename_pattern.format(**wildcards) + '.sorted.bam',
         reads2 = reads_prefix + basename_pattern + reads2_suffix + fastq_suffix + compression_suffix
     output:
         tag_directories_prefix + basename_pattern + '/tagInfo.txt'
@@ -46,7 +46,7 @@ rule tag_directories_homer_paired_end:
 
 rule tag_directories_homer_single_end:
     input:
-        bam = lambda wildcards: tag_directories_input_prefix_by_library_type[wildcards.library_type]['single_end'] + basename_pattern + '.sorted.bam'
+        bam = lambda wildcards: tag_directories_input_prefix_by_library_type[wildcards.library_type]['single_end'] + basename_pattern.format(**wildcards) + '.sorted.bam'
     output:
         tag_directories_prefix + basename_pattern + '/tagInfo.txt'
     log:
