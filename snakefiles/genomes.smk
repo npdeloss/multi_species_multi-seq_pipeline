@@ -32,7 +32,7 @@ rule download_annotation:
     params:
         url = lambda wildcards: config['genomes'][wildcards.organism][wildcards.reference]['annotation_gtf']['url']
     log:
-        prefix+'/downloads/annotation.gtf.gz.log'
+        prefix+'downloads/annotation.gtf.gz.log'
     conda:
         '../envs/wget.yaml'
     shell:
