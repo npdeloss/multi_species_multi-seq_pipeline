@@ -160,6 +160,8 @@ rule alignment_bowtie2_index_bam:
         alignment_bowtie2_prefix + '{basename}.sorted.bam.bai'
     log:
         alignment_bowtie2_prefix + '{basename}.sorted.index.log'
+    conda:
+        '../envs/samtools.yaml'
     shell:
         """
         sleep 1s

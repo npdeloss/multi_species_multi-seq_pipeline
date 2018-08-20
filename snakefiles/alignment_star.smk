@@ -161,6 +161,8 @@ rule alignment_star_index_bam:
         alignment_star_prefix + '{basename}.sorted.bam.bai'
     log:
         alignment_star_prefix + '{basename}.sorted.index.log'
+    conda:
+        '../envs/samtools.yaml'
     shell:
         """
         sleep 1s
