@@ -15,6 +15,7 @@ compression_suffix = config['reads']['compression_suffix']
 basename_pattern = config['tag_directories']['basename_pattern']
 tag_directories_prefix = config['tag_directories']['prefix']
 tag_directories_library_types = config['tag_directories']['library_types']
+# We assume only paired end and single end libraries for now
 end_types = ['paired_end', 'single_end']
 tag_directories_input_prefix_by_library_type = {}
 tag_directories_options_by_library_type = {}
