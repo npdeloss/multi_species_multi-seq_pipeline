@@ -125,3 +125,4 @@ dependencies:
   - tk=8.6.7=hc745277_3
   - xz=5.2.4=h14c3975_4
   - zlib=1.2.11=ha838bed_2
+  - samtools=1.7=1
