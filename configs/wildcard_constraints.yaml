@@ -1,3 +1,8 @@
 wildcard_constraints:
-    organism: '[^\/]+'
+    basename: '[^\/]+'
+    organism: '[^\/_]+'
     reference: '[^\/]+'
+    library_type: '[^\/_]+'
+    cell_type: '[^\/_]+'
+    description: '[^\/_]+'
+    initials: '[^\/_]+'

@@ -166,4 +166,4 @@ rule alignment_bowtie2_index_bam:
         """
         sleep 1s
         samtools index {input} &> {log}
-        """
+        """-

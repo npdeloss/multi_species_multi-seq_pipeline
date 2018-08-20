@@ -1,0 +1,22 @@
+tag_directories:
+    prefix: 'tag_directories/{organism}/{reference}/'
+    basename_pattern: '{organism}_{cell_type}_{library_type}_{description}_{initials}'
+    library_types:
+        rna:
+            paired_end:
+                input_prefix: 'alignment_star/{organism}/{reference}/'
+                params:
+                    options: '-flip -sspe'
+            single_end:
+                input_prefix: 'alignment_star/{organism}/{reference}/'
+                params:
+                    options: ''
+        chip:
+            paired_end:
+                input_prefix: 'alignment_bowtie2/{organism}/{reference}/'
+                params:
+                    options: ''
+            single_end:
+                input_prefix: 'alignment_bowtie2/{organism}/{reference}/'
+                params:
+                    options: ''
