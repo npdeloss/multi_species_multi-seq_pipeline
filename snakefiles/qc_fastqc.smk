@@ -25,3 +25,16 @@ rule qc_fastqc:
         mkdir -p $(dirname {output.html})
         fastqc -o $(dirname {output.html}) {input.reads} &> {log}
         """
+
+rule qc_fastqc_unzip:
+    input:
+        qc_fastqc_prefix + '{basename_and_read_suffix}_fastqc.zip'
+    output:
+        qc_fastqc_prefix + '{basename_and_read_suffix}_fastqc/summary.txt'
+    log:
+        qc_fastqc_prefix + '{basename_and_read_suffix}_fastqc.unzip.log'
+    shell:
+        """
+        cd $(dirname {input})
+        unzip $(basename {input}) &> {log}
+        """
