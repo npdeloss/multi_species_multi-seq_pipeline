@@ -42,8 +42,8 @@ rule bigwigs_homer:
 
 rule bigwigs_homer_alias_both:
     input:
-        bigwig = bigwigs_homer_prefix + '{basename}.{strand}.bw',
-        track_info = bigwigs_homer_prefix + '{basename}.{strand}.trackInfo.txt'
+        bigwig = bigwigs_homer_prefix + '{basename}.both.bw',
+        track_info = bigwigs_homer_prefix + '{basename}.both.trackInfo.txt'
     output:
         bigwig = bigwigs_homer_prefix + '{basename}.bw',
         track_info = bigwigs_homer_prefix + '{basename}.trackInfo.txt'
