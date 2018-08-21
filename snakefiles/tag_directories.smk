@@ -62,5 +62,5 @@ rule tag_directories_homer_single_end:
     shell:
         """
         mkdir -p $(dirname {output})
-        makeTagDirectory $(dirname {output}) {params.options} {input.bam} &> $(basename {log})
+        makeTagDirectory $(dirname {output}) {params.options} {input.bam} &> {log}
         """

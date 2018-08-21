@@ -36,5 +36,5 @@ rule qc_fastqc_unzip:
     shell:
         """
         cd $(dirname {input})
-        unzip $(basename {input}) &> {log}
+        unzip $(basename {input}) &> $(basename {log})
         """
