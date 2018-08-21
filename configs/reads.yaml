@@ -1,5 +1,6 @@
 reads:
     prefix: 'reads_fastq/'
+    basename_pattern: '{organism}_{cell_type}_{library_type}_{description}_{initials}'
     reads1_suffix: '_R1_001'
     reads2_suffix: '_R2_001'
     fastq_suffix: '.fastq'
