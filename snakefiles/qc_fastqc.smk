@@ -56,7 +56,7 @@ def get_all_basenames_and_read_suffixes():
 
 rule qc_fastqc_index_from_reads:
     input:
-        [qc_fastqc_prefix + basename_and_read_suffix + '/summary.txt' for basename_and_read_suffix in get_all_basenames_and_read_suffixes()]
+        [qc_fastqc_prefix + basename_and_read_suffix + '_fastqc/summary.txt' for basename_and_read_suffix in get_all_basenames_and_read_suffixes()]
     output:
         qc_fastqc_prefix + 'index.txt'
     run:
