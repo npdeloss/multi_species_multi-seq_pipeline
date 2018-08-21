@@ -49,7 +49,7 @@ def get_all_basenames_and_read_suffixes():
                                                    library_type = None, 
                                                    basename_pattern = basename_pattern, 
                                                    reads_prefix = reads_prefix, 
-                                                   suffix = reads1_suffix + fastq_suffix + compression_suffix)
+                                                   suffix = reads2_suffix + fastq_suffix + compression_suffix)
     basenames_and_read_suffixes = [basename + reads1_suffix for basename in reads1_basenames]
     basenames_and_read_suffixes = basenames_and_read_suffixes + [basename + reads2_suffix for basename in reads2_basenames]
     return basenames_and_read_suffixes
