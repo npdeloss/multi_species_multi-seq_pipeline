@@ -69,7 +69,7 @@ rule tag_directories_homer_single_end:
 
 rule tag_directories_homer_from_reads:
     input:
-        lambda wildcards: [tag_directories_prefix + basename + '/tagInfo.txt' for basename in get_read_basenames_for_organism(wildcards.organism)]
+        lambda wildcards: [(tag_directories_prefix + basename + '/tagInfo.txt').format(**wildcards) for basename in get_read_basenames_for_organism(wildcards.organism)]
     output:
         tag_directories_prefix + 'index.txt'
     run:
