@@ -13,13 +13,15 @@ reads1_suffix = config['reads']['reads1_suffix']
 reads2_suffix = config['reads']['reads2_suffix']
 fastq_suffix = config['reads']['fastq_suffix']
 compression_suffix = config['reads']['compression_suffix']
-    
+
+# Get all basenames for reads in our reads directory that match a particular organism (and optionally, library type)
 def get_read_basenames_for_organism(organism, library_type = None, 
                                     basename_pattern = basename_pattern, 
                                     reads_prefix = reads_prefix, 
-                                    suffix = reads1_suffix + compression_suffix):
+                                    suffix = reads1_suffix + fastq_suffix + compression_suffix):
     # Concatenate the pattern to search for reads
-    reads_pattern = reads_prefix+basename_pattern+reads1_suffix + suffix
+    reads_pattern = reads_prefix + basename_pattern + suffix
+    print(reads_pattern)
     # Search for files, get wildcard values
     wc_dict = dict(glob_wildcards(reads_pattern)._asdict())
     # Filter only for wildcard values at indices where the organism matches our argument
