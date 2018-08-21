@@ -1,18 +1,7 @@
 from itertools import compress
 
-# Import naming convention for reads
-# configfile: 'configs/reads.yaml'
 # Import tag directory default configuration
 configfile: 'configs/tag_directories.yaml'
-
-# Import naming conventions for reads as variables
-## Basename pattern contains wildcards in curly brace format that are referenced. The most important ones are organism and library_type wildcards.
-# basename_pattern = config['reads']['basename_pattern']
-# reads_prefix = config['reads']['prefix']
-# reads1_suffix = config['reads']['reads1_suffix']
-# reads2_suffix = config['reads']['reads2_suffix']
-# fastq_suffix = config['reads']['fastq_suffix']
-# compression_suffix = config['reads']['compression_suffix']
 
 # Import tag directory configuration as variables
 tag_directories_prefix = config['tag_directories']['prefix']
@@ -67,7 +56,7 @@ rule tag_directories_homer_single_end:
         makeTagDirectory $(dirname {output}) {params.options} {input.bam} &> {log}
         """
 
-rule tag_directories_homer_from_reads:
+rule tag_directories_homer_index_from_reads:
     input:
         lambda wildcards: [(tag_directories_prefix + basename + '/tagInfo.txt').format(**wildcards) for basename in get_read_basenames_for_organism(wildcards.organism)]
     output:
@@ -75,7 +64,7 @@ rule tag_directories_homer_from_reads:
     run:
         shell(f'mkdir -p $(dirname {output[0]})')
         tag_info_list = [tag_info for tag_info in input]
-        tag_dirs_list = ['/'.join(tag_info.split('/')[:-1])+'/']
+        tag_dirs_list = sorted(['/'.join(tag_info.split('/')[:-1])+'/' for tag_info in tag_info_list])
         tag_dirs_string = '\n'.join(tag_dirs_list)+'\n'
         with (output[0], 'w') as outfile:
             outfile.write(tag_dirs_string)

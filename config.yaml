@@ -9,3 +9,5 @@ targets:
         - 'tag_directories/human/grch38/human_htbe_rna_total-h5n1-0h-rep1_MC/tagInfo.txt'
         - 'tag_directories/human/grch38/human_htbe_chip_h3k27ac-h5n1-0h-rep1_MC/tagInfo.txt'
         - 'bigwigs_homer/human/grch38/human_htbe_chip_h3k27ac-h5n1-0h-rep1_MC.bw'
+        - 'qc_fastqc/index.txt'
+        - 'tag_directories/human/grch38/index.txt'

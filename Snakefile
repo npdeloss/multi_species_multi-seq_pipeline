@@ -24,6 +24,9 @@ def get_read_basenames_for_organism(organism, library_type = None,
     print(reads_pattern)
     # Search for files, get wildcard values
     wc_dict = dict(glob_wildcards(reads_pattern)._asdict())
+    # If we aren't looking for any organism in particular, just return all the basenames
+    if organism is None:
+        return expand(basename_pattern, zip, **wc_dict)
     # Filter only for wildcard values at indices where the organism matches our argument
     organism_index = [organism_entry == organism for organism_entry in wc_dict['organism']]
     wc_dict_for_organism = {key: list(compress(wc_dict[key], organism_index)) for key in wc_dict}
