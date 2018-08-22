@@ -44,6 +44,7 @@ include: 'snakefiles/qc.smk'
 include: 'snakefiles/alignment.smk'
 include: 'snakefiles/tag_directories.smk'
 include: 'snakefiles/bigwigs.smk'
+include: 'snakefiles/gene_quantifications.smk'
 
 configfile: 'config.yaml'
 
