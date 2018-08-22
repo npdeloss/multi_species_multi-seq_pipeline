@@ -28,7 +28,7 @@ rule index_kallisto:
         kallisto index {params.options} -i {output} {input} &> {log}
         """
 
-ruleorder: quantifications_kallisto_paired_end > quantifications_kallisto_single_end
+ruleorder: gene_quantifications_kallisto_paired_end > gene_quantifications_kallisto_single_end
 
 rule gene_quantifications_kallisto_paired_end:
     input:
