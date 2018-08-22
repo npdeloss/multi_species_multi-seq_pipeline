@@ -45,15 +45,19 @@ rule gene_quantifications_kallisto_paired_end:
         gq_kallisto_threads
     params:
         options = gq_kallisto_paired_end_options
+    conda:
+        '../envs/kallisto.yaml'
     shell:
         """
         mkdir -p $(dirname {output.abundance_tsv})
         kallisto quant \
         -i {input.index} \
         -o $(dirname {output.abundance_tsv}) \
+        -t {threads} \
         {params.options} \
         {input.reads1} \
-        {input.reads2}
+        {input.reads2} \
+        &> {log}
         """
 
 rule gene_quantifications_kallisto_single_end:
@@ -70,14 +74,18 @@ rule gene_quantifications_kallisto_single_end:
         gq_kallisto_threads
     params:
         options = gq_kallisto_single_end_options
+    conda:
+        '../envs/kallisto.yaml'
     shell:
         """
         mkdir -p $(dirname {output.abundance_tsv})
         kallisto quant \
         -i {input.index} \
         -o $(dirname {output.abundance_tsv}) \
+        -t {threads} \
         {params.options} \
-        --single {input.reads1}
+        --single {input.reads1} \
+        &> {log}
         """
 
 rule gene_quantifications_kallisto_library_type_index:

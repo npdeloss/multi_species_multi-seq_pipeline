@@ -68,3 +68,17 @@ rule tag_directories_homer_index_from_reads:
         tag_dirs_string = '\n'.join(tag_dirs_list)+'\n'
         with open(output[0], 'w') as outfile:
             outfile.write(tag_dirs_string)
+
+rule tag_directories_library_type_index:
+    input:
+        lambda wildcards: [(tag_directories_prefix + basename + '/tagInfo.tsv').format(**wildcards) for basename in get_read_basenames_for_organism(wildcards.organism, 
+                                                                                                                                                        library_type = wildcards.library_type)]
+    output:
+        tag_directories_prefix + 'index.{library_type}.txt'
+    run:
+        shell(f'mkdir -p $(dirname {output[0]})')
+        input_files = [input_file for input_file in input]
+        input_dirs = sorted(['/'.join(input_file.split('/')[:-1])+'/' for input_file in input_files])
+        input_dirs_string = '\n'.join(input_dirs)+'\n'
+        with open(output[0], 'w') as outfile:
+            outfile.write(input_dirs_string)
