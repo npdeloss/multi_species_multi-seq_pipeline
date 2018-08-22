@@ -15,9 +15,9 @@ rule index_kallisto:
     input:
         gq_kallisto_index_input_prefix + 'transcriptome.fa'
     output:
-        gq_kallisto_index + 'transcriptome.idx'
+        gq_kallisto_index_prefix + 'transcriptome.idx'
     log:
-        gq_kallisto_index + 'transcriptome.log'
+        gq_kallisto_index_prefix + 'transcriptome.log'
     params:
         options = gq_kallisto_index_options
     conda:
@@ -34,7 +34,7 @@ rule gene_quantifications_kallisto_paired_end:
     input:
         reads1 = gq_kallisto_input_prefix + '{basename}' + reads1_suffix + fastq_suffix + compression_suffix,
         reads2 = gq_kallisto_input_prefix + '{basename}' + reads2_suffix + fastq_suffix + compression_suffix,
-        index = gq_kallisto_index + 'transcriptome.idx'
+        index = gq_kallisto_index_prefix + 'transcriptome.idx'
     output:
         abundance_tsv = gq_kallisto_prefix + '{basename}/abundance.tsv',
         abundance_h5 = gq_kallisto_prefix + '{basename}/abundance.h5',
@@ -59,7 +59,7 @@ rule gene_quantifications_kallisto_paired_end:
 rule gene_quantifications_kallisto_single_end:
     input:
         reads1 = gq_kallisto_input_prefix + '{basename}' + reads1_suffix + fastq_suffix + compression_suffix,
-        index = gq_kallisto_index + 'transcriptome.idx'
+        index = gq_kallisto_index_prefix + 'transcriptome.idx'
     output:
         abundance_tsv = gq_kallisto_prefix + '{basename}/abundance.tsv',
         abundance_h5 = gq_kallisto_prefix + '{basename}/abundance.h5',
