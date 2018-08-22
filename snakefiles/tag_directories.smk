@@ -66,5 +66,5 @@ rule tag_directories_homer_index_from_reads:
         tag_info_list = [tag_info for tag_info in input]
         tag_dirs_list = sorted(['/'.join(tag_info.split('/')[:-1])+'/' for tag_info in tag_info_list])
         tag_dirs_string = '\n'.join(tag_dirs_list)+'\n'
-        with (output[0], 'w') as outfile:
+        with open(output[0], 'w') as outfile:
             outfile.write(tag_dirs_string)

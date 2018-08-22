@@ -21,7 +21,6 @@ def get_read_basenames_for_organism(organism, library_type = None,
                                     suffix = reads1_suffix + fastq_suffix + compression_suffix):
     # Concatenate the pattern to search for reads
     reads_pattern = reads_prefix + basename_pattern + suffix
-    print(reads_pattern)
     # Search for files, get wildcard values
     wc_dict = dict(glob_wildcards(reads_pattern)._asdict())
     # If we aren't looking for any organism in particular, just return all the basenames

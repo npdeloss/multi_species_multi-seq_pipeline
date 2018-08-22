@@ -63,5 +63,5 @@ rule qc_fastqc_index_from_reads:
         summary_list = [summary for summary in input]
         qc_dirs_list = sorted(['/'.join(summary.split('/')[:-1])+'/' for summary in summary_list])
         qc_dirs_string = '\n'.join(qc_dirs_list)+'\n'
-        with (output[0], 'w') as outfile:
+        with open(output[0], 'w') as outfile:
             outfile.write(qc_dirs_string)
