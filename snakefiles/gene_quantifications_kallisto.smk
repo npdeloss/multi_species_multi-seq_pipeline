@@ -85,7 +85,7 @@ rule gene_quantifications_kallisto_library_type_index:
         lambda wildcards: [(gq_kallisto_prefix + basename + '/abundance.tsv').format(**wildcards) for basename in get_read_basenames_for_organism(wildcards.organism, 
                                                                                                                                                         library_type = wildcards.library_type)]
     output:
-        tag_directories_prefix + 'index.{library_type}.txt'
+        gq_kallisto_prefix + 'index.{library_type}.txt'
     run:
         shell(f'mkdir -p $(dirname {output[0]})')
         input_files = [input_file for input_file in input]
