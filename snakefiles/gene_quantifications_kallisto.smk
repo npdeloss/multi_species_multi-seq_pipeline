@@ -82,7 +82,7 @@ rule gene_quantifications_kallisto_single_end:
 
 rule gene_quantifications_kallisto_library_type_index:
     input:
-        lambda wildcards: [(gq_kallisto_input_prefix + basename + '/abundance.tsv').format(**wildcards) for basename in get_read_basenames_for_organism(wildcards.organism, 
+        lambda wildcards: [(gq_kallisto_prefix + basename + '/abundance.tsv').format(**wildcards) for basename in get_read_basenames_for_organism(wildcards.organism, 
                                                                                                                                                         library_type = wildcards.library_type)]
     output:
         tag_directories_prefix + 'index.{library_type}.txt'
