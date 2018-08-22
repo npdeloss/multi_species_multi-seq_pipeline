@@ -150,7 +150,7 @@ rule seq_size_transcriptome:
     input:
         prefix+'transcriptome.fa.fai'
     output:
-        prefix+transcriptome.seq.sizes'
+        prefix+'transcriptome.seq.sizes'
     shell:
         """
         cut -f1,2 {input} > {output}
