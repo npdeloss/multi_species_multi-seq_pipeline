@@ -118,3 +118,40 @@ rule tabix_annotation:
         sleep 5s
         tabix -f -p gff {input} 2> {log}
         """
+
+rule generate_transcriptome:
+    input:
+        genome_fa = prefix+'genome.fa',
+        annotation_gtf = prefix+'annotation.gtf'
+    output:
+        prefix+'transcriptome.fa'
+    log:
+        prefix+'transcriptome.log'
+    conda:
+        '../envs/gffread.yaml'
+    shell:
+        """
+        gffread -w {output} -g {input.genome_fa} {input.annotation_gtf} &> {log}
+        """
+
+rule index_transcriptome:
+    input:
+        prefix+'transcriptome.fa'
+    output:
+        prefix+'transcriptome.fa.fai'
+    conda:
+        '../envs/samtools.yaml'
+    shell:
+        """
+        samtools faidx {input}
+        """
+
+rule seq_size_transcriptome:
+    input:
+        prefix+'transcriptome.fa.fai'
+    output:
+        prefix+transcriptome.seq.sizes'
+    shell:
+        """
+        cut -f1,2 {input} > {output}
+        """

@@ -1,0 +1,25 @@
+gene_quantifications:
+    kallisto:
+        prefix: 'gene_quantifications_kallisto/{organism}/{reference}/'
+        input_prefix: 'postprocessing_fastp/'
+        threads: 8
+        index:
+            prefix: 'genomes/{organism}/{reference}/kallisto/'
+            input_prefix: 'genomes/{organism}/{reference}/'
+            params:
+                options: ''
+        paired_end:
+            params:
+                options: '-b 100'
+        single_end:
+            params:
+                options: '-b 100 -l 180 -s 20'
+    homer:
+        prefix: 'gene_quantifications_homer/{organism}/{reference}/'
+        input_prefix: 'tag_directories/'
+        paired_end:
+            params:
+                options: ''
+        single_end:
+            params:
+                options: ''

@@ -39,6 +39,8 @@ rule index_bowtie2:
         index_bowtie2_threads
     params:
         options = index_bowtie2_params_options
+    shadow:
+        'shallow'
     conda:
         '../envs/bowtie2.yaml'
     shell:
@@ -68,6 +70,8 @@ rule alignment_bowtie2_paired_end:
         alignment_bowtie2_threads
     params:
         options = alignment_bowtie2_paired_end_params_options
+    shadow:
+        'shallow'
     conda:
         '../envs/bowtie2.yaml'
     shell:
@@ -104,6 +108,8 @@ rule alignment_bowtie2_single_end:
         alignment_bowtie2_threads
     params:
         options = alignment_bowtie2_paired_end_params_options
+    shadow:
+        'shallow'
     conda:
         '../envs/bowtie2.yaml'
     shell:
@@ -139,6 +145,8 @@ rule alignment_bowtie2_sort_bam:
         alignment_bowtie2_prefix + '{basename}.sorted.log'
     params:
         options = alignment_sort_params_options
+    shadow:
+        'shallow'
     conda:
         '../envs/samtools.yaml'
     shell:
@@ -160,6 +168,8 @@ rule alignment_bowtie2_index_bam:
         alignment_bowtie2_prefix + '{basename}.sorted.bam.bai'
     log:
         alignment_bowtie2_prefix + '{basename}.sorted.index.log'
+    shadow:
+        'shallow'
     conda:
         '../envs/samtools.yaml'
     shell:
