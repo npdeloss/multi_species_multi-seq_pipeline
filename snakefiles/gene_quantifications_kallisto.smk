@@ -102,11 +102,11 @@ rule gene_quantifications_kallisto_library_type_index:
         with open(output[0], 'w') as outfile:
             outfile.write(input_dirs_string)
 
-rule gene_quantification_kallisto_library_type_table:
+rule gene_quantification_kallisto_library_type_transcripts_table:
     input:
         gq_kallisto_prefix + 'index.{library_type}.txt'
     output:
-        'quantifications.{norm_method}.{library_type}.tsv'
+        'transcripts.{norm_method}.{library_type}.tsv'
     run:
         combined_df = combine_quantification_tables(index_filepath = input[0], 
                                                     output_filepath = output[0], 
