@@ -113,4 +113,19 @@ rule gene_quantification_kallisto_library_type_transcript_table:
                                                     df_filepath_suffix = 'abundance.tsv', 
                                                     key_column = 'target_id', 
                                                     value_column = wildcards.norm_method, 
+                                                    renamed_key_column = 'transcript_id',
                                                     sep = '\t')
+
+rule gene_quantification_kallisto_library_type_gene_table:
+    input:
+        quantification = gq_kallisto_prefix + 'transcript.{norm_method}.{library_type}.tsv',
+        annotation = gq_kallisto_index_input_prefix + 'annotation.tsv'
+    output:
+        gq_kallisto_prefix + 'gene.{norm_method}.{library_type}.tsv'
+    run:
+        quantification_df = pd.read_table(input.quantification)
+        annotation_df = pd.read_table(input.annotation)
+        transcript_to_gene = annotation_df.query('feature == "transcript"')[['transcript_id', 'gene_id']].drop_duplicates().set_index('transcript_id')['gene_id'].to_dict()
+        quantification_df['gene_id'] = quantification_df['transcript_id'].apply(lambda transcript_id: transcript_to_gene[transcript_id])
+        quantification_df = quantification_df.drop('transcript_id', axis =1).groupby('gene_id').sum().reset_index()
+        quantification_df.to_csv(output[0], sep = '\t', index = False)

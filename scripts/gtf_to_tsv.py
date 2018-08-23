@@ -4,7 +4,7 @@ from gtfparse import read_gtf
 
 def main(gtf, tsv):
     df = read_gtf(gtf)
-    df.to_csv(tsv, sep = '\t')
+    df.to_csv(tsv, sep = '\t', index = False)
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description = 'Convert a GTF file to a TSV file')

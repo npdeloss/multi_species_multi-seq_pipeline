@@ -5,5 +5,4 @@ targets:
         - 'bigwigs_homer/human/grch38/human_htbe_chip_h3k27ac-h5n1-0h-rep1_MC.bw'
         - 'qc_fastqc/index.txt'
         - 'tag_directories/human/grch38/index.txt'
-        - 'gene_quantifications_kallisto/human/grch38/index.rna.txt'
-        - 'gene_quantifications_kallisto/human/grch38/transcript.tpm.rna.tsv'
+        - 'gene_quantifications_kallisto/human/grch38/gene.tpm.rna.tsv'

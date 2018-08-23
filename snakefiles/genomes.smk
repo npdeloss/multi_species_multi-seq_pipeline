@@ -124,11 +124,13 @@ rule annotation_tsv:
         prefix+'annotation.gtf'
     output:
         prefix+'annotation.tsv'
+    log:
+        prefix+'annotation.tsv.log'
     conda:
         '../envs/gtfparse.yaml'
     shell:
         """
-        
+        python scripts/gtf_to_tsv.py {input} {output} &> {log}
         """
 
 rule generate_transcriptome:
