@@ -1,0 +1,6 @@
+channels:
+ - bioconda
+ - defaults
+dependencies:
+ - gtfparse=1.0.7
+ - pandas=0.23.4
