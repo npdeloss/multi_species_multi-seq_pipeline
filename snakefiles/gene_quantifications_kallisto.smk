@@ -109,7 +109,7 @@ rule gene_quantification_kallisto_library_type_table:
         'quantifications.{norm_method}.{library_type}.tsv'
     run:
         combined_df = combine_quantification_tables(index_filepath = input[0], 
-                                                    output_filepath output[0], 
+                                                    output_filepath = output[0], 
                                                     df_filepath_suffix = 'abundance.tsv', 
                                                     key_column = target_id, 
                                                     value_column = wildcards.norm_method, 
