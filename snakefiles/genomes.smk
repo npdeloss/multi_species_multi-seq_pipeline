@@ -119,6 +119,18 @@ rule tabix_annotation:
         tabix -f -p gff {input} 2> {log}
         """
 
+rule annotation_tsv:
+    input:
+        prefix+'annotation.gtf'
+    output:
+        prefix+'annotation.tsv'
+    conda:
+        '../envs/gtfparse.yaml'
+    shell:
+        """
+        
+        """
+
 rule generate_transcriptome:
     input:
         genome_fa = prefix+'genome.fa',

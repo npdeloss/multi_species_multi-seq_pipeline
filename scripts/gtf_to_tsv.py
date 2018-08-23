@@ -10,8 +10,8 @@ def main(gtf, tsv):
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description = 'Convert a GTF file to a TSV file')
-    parser.add_argument('gtf', type=int, help='Input GTF file')
-    parser.add_argument('tsv', type=int, help='Output TSV file')
+    parser.add_argument('gtf', type=str, help='Input GTF file')
+    parser.add_argument('tsv', type=str, help='Output TSV file')
     args = parser.parse_args()
     return args
 
