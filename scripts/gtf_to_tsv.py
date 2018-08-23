@@ -3,8 +3,6 @@ import pandas as pd
 from gtfparse import read_gtf
 
 def main(gtf, tsv):
-    gtf = args.gtf
-    tsv = args.tsv
     df = read_gtf(gtf)
     df.to_csv(tsv, sep = '\t')
 
