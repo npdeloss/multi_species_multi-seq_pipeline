@@ -106,7 +106,7 @@ rule gene_quantification_kallisto_library_type_transcript_table:
     input:
         gq_kallisto_prefix + 'index.{library_type}.txt'
     output:
-        'transcript.{norm_method}.{library_type}.tsv'
+        gq_kallisto_prefix + 'transcript.{norm_method}.{library_type}.tsv'
     run:
         combined_df = combine_quantification_tables(index_filepath = input[0], 
                                                     output_filepath = output[0], 
