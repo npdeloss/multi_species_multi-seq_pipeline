@@ -6,4 +6,4 @@ targets:
         - 'qc_fastqc/index.txt'
         - 'tag_directories/human/grch38/index.txt'
         - 'gene_quantifications_kallisto/human/grch38/index.rna.txt'
-        - 'gene_quantifications_kallisto/human/grch38/quantifications.tpm.rna.txt'
+        - 'gene_quantifications_kallisto/human/grch38/transcript.tpm.rna.txt'
