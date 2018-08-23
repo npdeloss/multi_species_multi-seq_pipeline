@@ -55,3 +55,5 @@ rule bigwigs_homer_alias_both:
         ln -sf $(basename {input.bigwig}) {output.bigwig}
         ln -sf $(basename {input.track_info}) {output.track_info}
         """
+
+
