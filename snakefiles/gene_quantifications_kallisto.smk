@@ -101,3 +101,16 @@ rule gene_quantifications_kallisto_library_type_index:
         input_dirs_string = '\n'.join(input_dirs)+'\n'
         with open(output[0], 'w') as outfile:
             outfile.write(input_dirs_string)
+
+rule gene_quantification_kallisto_library_type_table:
+    input:
+        gq_kallisto_prefix + 'index.{library_type}.txt'
+    output:
+        'quantifications.{norm_method}.{library_type}.tsv'
+    run:
+        combined_df = combine_quantification_tables(index_filepath = input[0], 
+                                                    output_filepath output[0], 
+                                                    df_filepath_suffix = 'abundance.tsv', 
+                                                    key_column = target_id, 
+                                                    value_column = wildcards.norm_method, 
+                                                    sep = '\t')
