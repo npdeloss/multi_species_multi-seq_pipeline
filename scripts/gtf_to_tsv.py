@@ -15,5 +15,5 @@ def parse_arguments():
     return args
 
 if __name__ == "__main__":
-    args = parse_arguments
+    args = parse_arguments()
     main(**args)
