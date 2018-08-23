@@ -13,7 +13,7 @@ def parse_arguments():
     parser.add_argument('gtf', type=str, help='Input GTF file')
     parser.add_argument('tsv', type=str, help='Output TSV file')
     args = parser.parse_args()
-    return args
+    return vars(args)
 
 if __name__ == "__main__":
     args = parse_arguments()
