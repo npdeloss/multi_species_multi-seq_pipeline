@@ -28,7 +28,7 @@ rule gene_quantifications_homer_paired_end:
     shell:
         """
         mkdir -p $(dirname {output})
-        analyzeRepeats.pl {input.annotation_gtf} none {params.options} -d $(dirname {input.tag_dir}) > {output} 2> {log}
+        analyzeRepeats.pl {input.annotation_gtf} none {params.options} -d $(dirname {input.tag_dir}) -{wildcards.norm_method} > {output} 2> {log}
         """
 
 rule gene_quantifications_homer_single_end:
@@ -59,7 +59,7 @@ rule gene_quantifications_homer:
     shell:
         """
         echo gene_id\t{wildcards.basename} > {output}
-        cat {input} | cut -f1,9 | tail -n + 2 > {output}
+        cat {input} | cut -f1,9 | tail -n +2 >> {output}
         """
 
 rule gene_quantifications_homer_library_type_index:
@@ -87,6 +87,6 @@ rule gene_quantification_homer_library_type_gene_table:
                                                     df_filepath_suffix = f'{wildcards.norm_method}.tsv', 
                                                     key_column = 'gene_id', 
                                                     value_column = wildcards.norm_method, 
-                                                    renamed_key_column = 'transcript_id',
+                                                    renamed_key_column = 'gene_id',
                                                     sep = '\t')
 
