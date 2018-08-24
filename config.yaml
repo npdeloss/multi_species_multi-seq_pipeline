@@ -1,12 +1,11 @@
 targets:
     local:
-        - 'genomes/human/grch38/genome.chrom.sizes'
-        - 'genomes/human/grch38/transcriptome.seq.sizes'
-        - 'bigwigs_homer/human/grch38/human_htbe_chip_h3k27ac-h5n1-0h-rep1_MC.bw'
-        - 'qc_fastqc/index.txt'
         - 'tag_directories/human/grch38/index.txt'
         - 'gene_quantifications_kallisto/human/grch38/gene.tpm.rna.tsv'
         - 'gene_quantifications_kallisto/human/grch38/gene.est_counts.rna.tsv'
         - 'gene_quantifications_homer/human/grch38/gene.raw.rna.tsv'
         - 'gene_quantifications_homer/human/grch38/gene.norm.rna.tsv'
         - 'gene_quantifications_homer/human/grch38/gene.rpkm.rna.tsv'
+        - 'bigwigs_homer/human/grch38/index.pos.rna.txt'
+        - 'bigwigs_homer/human/grch38/index.neg.rna.txt'
+        - 'bigwigs_homer/human/grch38/index.chip.txt'

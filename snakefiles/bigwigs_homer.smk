@@ -56,4 +56,29 @@ rule bigwigs_homer_alias_both:
         ln -sf $(basename {input.track_info}) {output.track_info}
         """
 
+rule bigwigs_homer_index_library_type:
+    input:
+        lambda wildcards: [(bigwigs_homer_prefix + basename + '.{strand}.bw').format(**wildcards) for basename in get_read_basenames_for_organism(wildcards.organism, 
+                                                                                                                                                        library_type = wildcards.library_type)]
+    output:
+        bigwigs_homer_prefix + 'index.{strand}.{library_type}.txt'
+    run:
+        shell(f'mkdir -p $(dirname {output[0]})')
+        input_files = [input_file for input_file in input]
+        input_files_string = '\n'.join(input_files)+'\n'
+        with open(output[0], 'w') as outfile:
+            outfile.write(input_files_string)
 
+rule bigwigs_homer_index_library_type_alias_both:
+    input:
+        bigwigs_homer_prefix + 'index.both.{library_type}.txt',
+        lambda wildcards: [(bigwigs_homer_prefix + basename + '.bw').format(**wildcards) for basename in get_read_basenames_for_organism(wildcards.organism, 
+                                                                                                                                                        library_type = wildcards.library_type)]
+    output:
+        bigwigs_homer_prefix + 'index.{library_type}.txt'
+    run:
+        shell(f'mkdir -p $(dirname {output[0]})')
+        input_files = [input_file for input_file in input]
+        input_files_string = '\n'.join(input_files)+'\n'
+        with open(output[0], 'w') as outfile:
+            outfile.write(input_files_string)
