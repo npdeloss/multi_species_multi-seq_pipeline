@@ -33,7 +33,7 @@ rule gene_quantifications_homer_paired_end:
         gq_homer_prefix + '{basename}' + '/{norm_method}.log'
     params:
         options = gq_homer_paired_end_options,
-        norm_option = lambda wildcards: get_gw_homer_options_for_norm_method(wildcards.norm_method)
+        norm_option = lambda wildcards: get_gw_homer_option_for_norm_method(wildcards.norm_method)
     shadow:
         'shallow'
     conda:
@@ -61,7 +61,7 @@ rule gene_quantifications_homer_single_end:
         gq_homer_prefix + '{basename}' + '/{norm_method}.log'
     params:
         options = gq_homer_single_end_options,
-        norm_option = lambda wildcards: get_gw_homer_options_for_norm_method(wildcards.norm_method)
+        norm_option = lambda wildcards: get_gw_homer_option_for_norm_method(wildcards.norm_method)
     shadow:
         'shallow'
     conda:
