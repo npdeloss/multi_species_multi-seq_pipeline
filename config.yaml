@@ -9,4 +9,4 @@ targets:
         - 'bigwigs_homer/human/grch38/index.pos.rna.txt'
         - 'bigwigs_homer/human/grch38/index.neg.rna.txt'
         - 'bigwigs_homer/human/grch38/index.chip.txt'
-        - 'track_visualizations_bigwigs/human/grch38/index.chip.igv.json'
+        - 'track_visualizations_bigwigs/human/grch38/chip.igv.json'
