@@ -21,7 +21,7 @@ gene_quantifications:
             input_prefix: 'genomes/{organism}/{reference}/'
         paired_end:
             params:
-                options: '-strand - -count exons'
+                options: '-strand - -count exons -gid'
         single_end:
             params:
-                options: '-strand both -count exons'
+                options: '-strand both -count exons -gid'

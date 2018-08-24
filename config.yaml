@@ -8,3 +8,4 @@ targets:
         - 'gene_quantifications_kallisto/human/grch38/gene.tpm.rna.tsv'
         - 'gene_quantifications_kallisto/human/grch38/gene.est_counts.rna.tsv'
         - 'gene_quantifications_homer/human/grch38/human_htbe_rna_total-h5n1-0h-rep1_MC/raw.txt'
+        - 'gene_quantifications_homer/human/grch38/index.raw.txt'
