@@ -9,7 +9,7 @@ gq_kallisto_index_options = gq_kallisto_index['params']['options']
 gq_kallisto_index_input_prefix = gq_kallisto_index['input_prefix']
 
 gq_kallisto_paired_end_options = gq_kallisto['paired_end']['params']['options']
-gq_kallisto_single_end_options = gq_kallisto['paired_end']['params']['options']
+gq_kallisto_single_end_options = gq_kallisto['single_end']['params']['options']
 
 rule index_kallisto:
     input:
