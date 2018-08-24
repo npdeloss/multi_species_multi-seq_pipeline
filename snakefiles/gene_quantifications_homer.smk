@@ -12,7 +12,7 @@ ruleorder: gene_quantifications_homer_paired_end > gene_quantifications_homer_si
 
 rule gene_quantifications_homer_paired_end:
     input:
-        tag_dir = gq_kallisto_input_prefix + '{basename}' + '/tagInfo.txt',
+        tag_dir = gq_homer_input_prefix + '{basename}' + '/tagInfo.txt',
         reads2 = reads_prefix + '{basename}' + reads2_suffix + fastq_suffix + compression_suffix,
         annotation_gtf = gq_homer_index_input_prefix + '/annotation.gtf'
     output:
