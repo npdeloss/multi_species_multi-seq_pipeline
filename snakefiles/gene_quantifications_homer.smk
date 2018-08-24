@@ -28,7 +28,7 @@ rule gene_quantifications_homer_paired_end:
     shell:
         """
         mkdir -p $(dirname {output})
-        analyzeRepeats.pl {input.annotation_gtf} none {params.options} -d $(dirname {input.tag_dir}) &> {log}
+        analyzeRepeats.pl {input.annotation_gtf} none {params.options} -d $(dirname {input.tag_dir}) > {output} 2> {log}
         """
 
 rule gene_quantifications_homer_single_end:
