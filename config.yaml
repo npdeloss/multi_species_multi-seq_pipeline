@@ -1,5 +1,6 @@
 targets:
     local:
+        - 'qc_fastqc/index.txt'
         - 'tag_directories/human/grch38/index.txt'
         - 'gene_quantifications_kallisto/human/grch38/gene.tpm.rna.tsv'
         - 'gene_quantifications_kallisto/human/grch38/gene.est_counts.rna.tsv'
@@ -8,5 +9,7 @@ targets:
         - 'gene_quantifications_homer/human/grch38/gene.rpkm.rna.tsv'
         - 'bigwigs_homer/human/grch38/index.pos.rna.txt'
         - 'bigwigs_homer/human/grch38/index.neg.rna.txt'
+        - 'bigwigs_homer/human/grch38/index.rna.txt'
         - 'bigwigs_homer/human/grch38/index.chip.txt'
+        - 'track_visualizations_bigwigs/human/grch38/rna.igv.json'
         - 'track_visualizations_bigwigs/human/grch38/chip.igv.json'
