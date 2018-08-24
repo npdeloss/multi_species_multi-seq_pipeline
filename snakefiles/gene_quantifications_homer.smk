@@ -1,7 +1,6 @@
 gq_homer = config['gene_quantifications']['homer']
 gq_homer_prefix = gq_homer['prefix']
 gq_homer_input_prefix = gq_homer['input_prefix']
-gq_homer_threads = gq_homer['threads']
 
 gq_homer_index = config['gene_quantifications']['homer']['index']
 gq_homer_index_input_prefix = gq_homer_index['input_prefix']
