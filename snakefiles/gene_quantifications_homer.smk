@@ -58,7 +58,7 @@ rule gene_quantifications_homer:
         gq_homer_prefix + '{basename}' + '/{norm_method}.tsv'
     shell:
         """
-        echo gene_id\t{basename} > {output}
+        echo gene_id\t{wildcards.basename} > {output}
         cat {input} | cut -f1,9 | tail -n + 2 > {output}
         """
 
