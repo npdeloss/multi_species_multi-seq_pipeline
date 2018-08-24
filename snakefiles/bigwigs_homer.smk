@@ -71,7 +71,6 @@ rule bigwigs_homer_index_library_type:
 
 rule bigwigs_homer_index_library_type_alias_both:
     input:
-        bigwigs_homer_prefix + 'index.both.{library_type}.txt',
         lambda wildcards: [(bigwigs_homer_prefix + basename + '.bw').format(**wildcards) for basename in get_read_basenames_for_organism(wildcards.organism, 
                                                                                                                                                         library_type = wildcards.library_type)]
     output:
