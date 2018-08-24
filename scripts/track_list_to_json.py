@@ -38,7 +38,6 @@ def main(i, o, f, g, s, l):
         track['color'] = color
         track['autoscaleGroup'] = '1'
         track['height'] = 100
-        track['height'] = 100
     igv_session['tracks'] = [simple_annotation, annotation] + tracks
     with open(output.json, 'w') as out:
         out.write(json.dumps(igv_session, sort_keys=True, indent=4))

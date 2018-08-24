@@ -142,7 +142,7 @@ rule annotation_simplified_bed:
         annotation = pd.read_table(input[0]).query('feature == "gene"')
         annotation_bed = annotation[['seqname', 'start', 'end', 'gene_name', 'score', 'strand']].drop_duplicates().sort_values(['seqname', 'start'])
         annotation_bed['score'] = 0
-        annotation_bed.to_csv(output[0], index = False, header = False)
+        annotation_bed.to_csv(output[0], index = False, header = False, sep = '\t')
 
 rule generate_transcriptome:
     input:
