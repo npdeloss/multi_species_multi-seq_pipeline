@@ -34,7 +34,7 @@ rule gene_quantifications_homer_paired_end:
 rule gene_quantifications_homer_single_end:
     input:
         tag_dir = gq_kallisto_input_prefix + '{basename}' + '/tagInfo.txt',
-        annotation_gtf = gq_homer_index_input_prefix + '/annotation.gtf'
+        annotation_gtf = gq_homer_index_input_prefix + 'annotation.gtf'
     output:
         gq_homer_prefix + '{basename}' + '/{norm_method}.txt'
     log:
@@ -58,7 +58,7 @@ rule gene_quantifications_homer:
         gq_homer_prefix + '{basename}' + '/{norm_method}.tsv'
     shell:
         """
-        echo gene_id\t{wildcards.norm_method} > {output}
+        echo gene_id\t{basename} > {output}
         cat {input} | cut -f1,9 | tail -n + 2 > {output}
         """
 
@@ -67,7 +67,7 @@ rule gene_quantifications_homer_library_type_index:
         lambda wildcards: [(gq_homer_prefix + basename + '/{norm_method}.tsv').format(**wildcards) for basename in get_read_basenames_for_organism(wildcards.organism, 
                                                                                                                                                         library_type = wildcards.library_type)]
     output:
-        gq_homer_prefix + 'index.{library_type}.txt'
+        gq_homer_prefix + 'index.{norm_method}.{library_type}.txt'
     run:
         shell(f'mkdir -p $(dirname {output[0]})')
         input_files = [input_file for input_file in input]
@@ -75,3 +75,18 @@ rule gene_quantifications_homer_library_type_index:
         input_dirs_string = '\n'.join(input_dirs)+'\n'
         with open(output[0], 'w') as outfile:
             outfile.write(input_dirs_string)
+
+rule gene_quantification_homer_library_type_gene_table:
+    input:
+        gq_homer_prefix + 'index.{norm_method}.{library_type}.txt'
+    output:
+        gq_homer_prefix + 'gene.{norm_method}.{library_type}.tsv'
+    run:
+        combined_df = combine_quantification_tables(index_filepath = input[0], 
+                                                    output_filepath = output[0], 
+                                                    df_filepath_suffix = f'{wildcards.norm_method}.tsv', 
+                                                    key_column = 'gene_id', 
+                                                    value_column = wildcards.norm_method, 
+                                                    renamed_key_column = 'transcript_id',
+                                                    sep = '\t')
+
