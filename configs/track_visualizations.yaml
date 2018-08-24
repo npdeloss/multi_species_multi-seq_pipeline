@@ -1,0 +1,5 @@
+track_visualizations:
+    igv_js:
+        bigwigs:
+            input: 'bigwigs_homer/{organism}/{reference}/index.{basename}.txt'
+            output: 'track_visualizations_bigwigs/{organism}/{reference}/{basename}.igv.json'
