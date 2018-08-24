@@ -8,6 +8,18 @@ gq_homer_index_input_prefix = gq_homer_index['input_prefix']
 gq_homer_paired_end_options = gq_homer['paired_end']['params']['options']
 gq_homer_single_end_options = gq_homer['single_end']['params']['options']
 
+def get_gw_homer_option_for_norm_method(norm_method):
+    if norm_method.startswith('norm'):
+        split_norm_method = norm_method.split('_')
+        if len(split_norm_method) is 2:
+            return '-'+' '.join(split_norm_method)
+        else:
+            return '-norm'
+    elif norm_method in ['raw', 'rpkm', 'log', 'sqrt']:
+        return '-'+norm_method
+    else:
+        return '-raw'
+
 ruleorder: gene_quantifications_homer_paired_end > gene_quantifications_homer_single_end
 
 rule gene_quantifications_homer_paired_end:
@@ -21,6 +33,7 @@ rule gene_quantifications_homer_paired_end:
         gq_homer_prefix + '{basename}' + '/{norm_method}.log'
     params:
         options = gq_homer_paired_end_options
+        norm_option = lambda wildcards: get_gw_homer_options_for_norm_method(wildcards.norm_method)
     shadow:
         'shallow'
     conda:
@@ -32,7 +45,7 @@ rule gene_quantifications_homer_paired_end:
         {input.annotation_gtf} \
         none \
         {params.options} \
-        -{wildcards.norm_method} \
+        {params.norm_option} \
         -d $(dirname {input.tag_dir}) \
         > {output} \
         2>> {log}
@@ -48,6 +61,7 @@ rule gene_quantifications_homer_single_end:
         gq_homer_prefix + '{basename}' + '/{norm_method}.log'
     params:
         options = gq_homer_single_end_options
+        norm_option = lambda wildcards: get_gw_homer_options_for_norm_method(wildcards.norm_method)
     shadow:
         'shallow'
     conda:
@@ -59,7 +73,7 @@ rule gene_quantifications_homer_single_end:
         {input.annotation_gtf} \
         none \
         {params.options} \
-        -{wildcards.norm_method} \
+        {params.norm_option} \
         -d $(dirname {input.tag_dir}) \
         > {output} \
         2>> {log}
