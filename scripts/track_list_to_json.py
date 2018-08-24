@@ -44,12 +44,12 @@ def main(i, o, f, g, s, l):
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description = 'Convert a list of tracks into a JSON file for use with IGV.js')
-    parser.add_argument('i', type=str, help='Text file containing a list of tracks')
-    parser.add_argument('o', type=str, help='Output JSON file for use with IGV.js')
-    parser.add_argument('f', type=str, help='Reference FASTA file. Should be indexed with samtools faidx.')
-    parser.add_argument('g', type=str, help='Sorted and bgzipped annotation GTF file. Should be indexed with tabix.')
-    parser.add_argument('s', type=str, help='Search BED file. Name field should correspond to name of locus.')
-    parser.add_argument('l', type=str, help='Locus that the visualization with default to, in the format chr:start-end')
+    parser.add_argument('-i', type=str, help='Text file containing a list of tracks')
+    parser.add_argument('-o', type=str, help='Output JSON file for use with IGV.js')
+    parser.add_argument('-f', type=str, help='Reference FASTA file. Should be indexed with samtools faidx.')
+    parser.add_argument('-g', type=str, help='Sorted and bgzipped annotation GTF file. Should be indexed with tabix.')
+    parser.add_argument('-s', type=str, help='Search BED file. Name field should correspond to name of locus.')
+    parser.add_argument('-l', type=str, help='Locus that the visualization with default to, in the format chr:start-end')
     args = parser.parse_args()
     return vars(args)
 
