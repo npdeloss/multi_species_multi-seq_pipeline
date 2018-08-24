@@ -45,6 +45,7 @@ include: 'snakefiles/alignment.smk'
 include: 'snakefiles/tag_directories.smk'
 include: 'snakefiles/bigwigs.smk'
 include: 'snakefiles/gene_quantifications.smk'
+include: 'snakefiles/track_visualizations.smk'
 
 configfile: 'config.yaml'
 
