@@ -18,12 +18,12 @@ rule track_visualizations_igv_js_bigwigs:
         """
         
         mkdir -p $(dirname {output})
-        locus=$(head -n1 {annotation_bed}|cut -f4)
+        locus=$(head -n1 {input.annotation_bed}|cut -f4)
         python scripts/track_list_to_json.py \
         -i {input.track_list} \
         -o {output} \
         -f {input.genome_fa} \
         -g {input.annotation_gtf} \
-        -s {annotation_bed} \
+        -s {input.annotation_bed} \
         -l $locus
         """
