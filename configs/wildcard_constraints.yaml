@@ -2,7 +2,7 @@ wildcard_constraints:
     basename: '[^\/]+'
     organism: '[^\/_]+'
     reference: '[^\/]+'
-    library_type: '[^\/_]+'
+    library_type: '[^\/_\.]+'
     cell_type: '[^\/_]+'
     description: '[^\/_]+'
     initials: '[^\/_]+'
