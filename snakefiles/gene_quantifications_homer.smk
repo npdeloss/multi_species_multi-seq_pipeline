@@ -9,7 +9,7 @@ gq_homer_index_input_prefix = gq_homer_index['input_prefix']
 gq_homer_paired_end_options = gq_homer['paired_end']['params']['options']
 gq_homer_single_end_options = gq_homer['single_end']['params']['options']
 
-ruleorder: gene_quantifications_homer_paired_end > gene_quantifications_homer_single_end:
+ruleorder: gene_quantifications_homer_paired_end > gene_quantifications_homer_single_end
 
 rule gene_quantifications_homer_paired_end:
     input:
