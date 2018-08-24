@@ -133,6 +133,17 @@ rule annotation_tsv:
         python scripts/gtf_to_tsv.py {input} {output} &> {log}
         """
 
+rule annotation_simplified_bed:
+    input:
+        prefix+'annotation.tsv'
+    output:
+        prefix+'annotation.simplified.bed'
+    run:
+        annotation = pd.read_table(input[0]).query('feature == "gene"')
+        annotation_bed = annotation[['seqname', 'start', 'end', 'gene_name', 'score', 'strand']].drop_duplicates().sort_values(['seqname', 'start'])
+        annotation_bed['score'] = 0
+        annotation_bed.to_csv(output[0], index = False, header = False)
+
 rule generate_transcriptome:
     input:
         genome_fa = prefix+'genome.fa',
