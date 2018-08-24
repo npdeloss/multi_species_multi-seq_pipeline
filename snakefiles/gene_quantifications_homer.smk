@@ -28,8 +28,14 @@ rule gene_quantifications_homer_paired_end:
     shell:
         """
         mkdir -p $(dirname {output})
-        echo analyzeRepeats.pl {input.annotation_gtf} none {params.options} -d $(dirname {input.tag_dir}) -{wildcards.norm_method} > {log}
-        analyzeRepeats.pl {input.annotation_gtf} none {params.options} -d $(dirname {input.tag_dir}) -{wildcards.norm_method} > {output} 2>> {log}
+        analyzeRepeats.pl \
+        {input.annotation_gtf} \
+        none \
+        {params.options} \
+        -{wildcards.norm_method} \
+        -d $(dirname {input.tag_dir}) \
+        > {output} \
+        2>> {log}
         """
 
 rule gene_quantifications_homer_single_end:
@@ -49,8 +55,14 @@ rule gene_quantifications_homer_single_end:
     shell:
         """
         mkdir -p $(dirname {output})
-        echo analyzeRepeats.pl {input.annotation_gtf} none {params.options} -d $(dirname {input.tag_dir}) -{wildcards.norm_method} > {log}
-        analyzeRepeats.pl {input.annotation_gtf} none {params.options} -d $(dirname {input.tag_dir}) -{wildcards.norm_method} > {output} 2>> {log}
+        analyzeRepeats.pl \
+        {input.annotation_gtf} \
+        none \
+        {params.options} \
+        -{wildcards.norm_method} \
+        -d $(dirname {input.tag_dir}) \
+        > {output} \
+        2>> {log}
         """
 
 rule gene_quantifications_homer:
