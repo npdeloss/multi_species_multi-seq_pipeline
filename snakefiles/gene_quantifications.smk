@@ -15,4 +15,4 @@ def combine_quantification_tables(index_filepath, output_filepath, df_filepath_s
 
 # Include different quantification methods
 include: 'gene_quantifications_kallisto.smk'
-# include: 'gene_quantifications_homer.smk'
+include: 'gene_quantifications_homer.smk'
