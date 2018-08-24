@@ -2,7 +2,7 @@ configfile: 'configs/track_visualizations.yaml'
 
 tv_igvjs_bw = config['track_visualizations']['igv_js']['bigwigs']
 
-track_visualizations_igv_js_bigwigs:
+rule track_visualizations_igv_js_bigwigs:
     input:
         track_list = tv_igvjs_bw['input'],
         genome_fa = prefix+'genome.fa',
