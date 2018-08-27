@@ -3,3 +3,5 @@ track_visualizations:
         bigwigs:
             input: 'bigwigs_homer/{organism}/{reference}/index.{basename}.txt'
             output: 'track_visualizations_bigwigs/{organism}/{reference}/{basename}.igv.json'
+        session_redirect_template: 'resources/igv_js_redirect.html'
+        session_redirect_string: '$SESSION_URL$'

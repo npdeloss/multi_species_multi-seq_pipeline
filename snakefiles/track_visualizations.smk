@@ -1,6 +1,8 @@
 configfile: 'configs/track_visualizations.yaml'
 
 tv_igvjs_bw = config['track_visualizations']['igv_js']['bigwigs']
+tv_igvjs_redirect_template = config['track_visualizations']['igv_js']['session_redirect_template']
+tv_igvjs_redirect_string = config['track_visualizations']['igv_js']['session_redirect_string']
 
 rule track_visualizations_igv_js_bigwigs:
     input:
@@ -27,3 +29,17 @@ rule track_visualizations_igv_js_bigwigs:
         -s {input.annotation_bed} \
         -l $locus
         """
+
+rule track_visualizations_html:
+    input:
+        json = track_visualizations/{filepath}.json,
+        html = tv_igvjs_redirect_template
+    output:
+        track_visualizations/{filepath}.html
+    params:
+        session_redirect_string = tv_igvjs_redirect_string
+    run:
+        with open(input.html) as template:
+            output_html = template.read().replace(params.session_redirect_string, input.json)
+            with open(output[0],'w') as outfile:
+                outfile.write(output_html)
