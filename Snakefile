@@ -79,7 +79,7 @@ rule www_from_source_dir:
     input:
         targets_local = 'targets_local.txt'
     output:
-        directory(directory(config['www']['dir'] + '{source_dir}')
+        directory(config['www']['dir'] + '{source_dir}')
     log:
         '{source_dir}.www_rsync.log'
     run:
