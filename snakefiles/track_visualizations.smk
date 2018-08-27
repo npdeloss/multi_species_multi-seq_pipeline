@@ -30,14 +30,14 @@ rule track_visualizations_igv_js_bigwigs:
         -l $locus
         """
 
-rule track_visualizations_html:
+rule track_visualizations_igv_js_to_html:
     input:
         json = track_visualizations/{filepath}.json,
         html = tv_igvjs_redirect_template
     output:
-        track_visualizations/{filepath}.html
+        '{filepath}.igv.json'
     params:
-        session_redirect_string = tv_igvjs_redirect_string
+        '{filepath}.igv.html'
     run:
         with open(input.html) as template:
             output_html = template.read().replace(params.session_redirect_string, input.json)
