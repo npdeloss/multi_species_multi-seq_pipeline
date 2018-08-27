@@ -1,3 +1,5 @@
+import os
+
 configfile: 'configs/wildcard_constraints.yaml'
 wildcard_constraints:
     **config['wildcard_constraints']
@@ -49,8 +51,38 @@ include: 'snakefiles/track_visualizations.smk'
 
 configfile: 'config.yaml'
 
-rule all:
+rule targets_local:
     input:
         **config['targets']
+    output:
+        'targets_local.txt'
+    run:
+        with open(output[0],'w') as outfile:
+            outfile.write('\n'.join([inputfile for inputfile in input])+'\n')
 
+rule www:
+    input:
+        targets_local = 'targets_local.txt', 
+        dirs = lambda wildcards: [directory(config['www']['dir'] + source_dir) for source_dir in config['www']['source_dirs']],
+        html = 'igv_js.html'
+    output:
+        igv_js = config['www']['dir'] + 'igv_js.html',
+        www = 'www'
+    shell:
+        """
+        mkdir -p $(dirname {output.igv_js})
+        cp {input.html} {output.igv_js}
+        touch {output.www}
+        """
 
+rule www_from_source_dir:
+    input:
+        targets_local = 'targets_local.txt'
+    output:
+        directory(directory(config['www']['dir'] + '{source_dir}')
+    log:
+        '{source_dir}.www_rsync.log'
+    run:
+        if os.path.isdir(wildcards.source_dir):
+            shell(f'mkdir -p {config["www"]["dir"]}')
+            shell(f'rsync  --verbose --archive --recursive {wildcards.source_dir} {config["www"]["dir"]}')

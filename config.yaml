@@ -1,3 +1,10 @@
+www:
+    dir: '/homer_data/www/html/npdeloss/multi_species_multi-seq_pipeline/'
+    url: 'http://homer.ucsd.edu/npdeloss/multi_species_multi-seq_pipeline/'
+    source_dirs:
+        - 'genomes'
+        - 'track_visualizations_bigwigs'
+        - 'bigwigs_homer'
 targets:
     local:
         - 'qc_fastqc/index.txt'
