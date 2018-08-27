@@ -85,4 +85,4 @@ rule www_from_source_dir:
     run:
         if os.path.isdir(wildcards.source_dir):
             shell(f'mkdir -p {config["www"]["dir"]}')
-            shell(f'rsync  --verbose --archive --recursive {wildcards.source_dir} {config["www"]["dir"]}')
+            shell(f'rsync  --verbose --archive --recursive {wildcards.source_dir} {config["www"]["dir"]} &> {log[0]}')
