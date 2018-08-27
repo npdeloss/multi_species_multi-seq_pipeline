@@ -38,7 +38,7 @@ def get_read_basenames_for_organism(organism, library_type = None,
     library_type_index = [library_type_entry == library_type for library_type_entry in wc_dict_for_organism['library_type']]
     wc_dict_for_library_type = {key: list(compress(wc_dict_for_organism[key], library_type_index)) for key in wc_dict_for_organism}
     # Expand the basenames out with the filtered wildcards and return them
-    return expand(basename_pattern, zip, **wc_dict_for_library_type)
+    return sorted(expand(basename_pattern, zip, **wc_dict_for_library_type))
 
 include: 'snakefiles/genomes.smk'
 include: 'snakefiles/preprocessing.smk'
