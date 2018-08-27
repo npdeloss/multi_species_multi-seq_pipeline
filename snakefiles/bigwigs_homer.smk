@@ -52,8 +52,10 @@ rule bigwigs_homer_alias_both:
     shell:
         """
         mkdir -p $(dirname {output.bigwig})
-        ln -sf $(basename {input.bigwig}) {output.bigwig}
-        ln -sf $(basename {input.track_info}) {output.track_info}
+        # ln -sf $(basename {input.bigwig}) {output.bigwig}
+        cp {input.bigwig} {output.bigwig}
+        # ln -sf $(basename {input.track_info}) {output.track_info}
+        cp {input.track_info} {output.track_info}
         """
 
 rule bigwigs_homer_index_library_type:
