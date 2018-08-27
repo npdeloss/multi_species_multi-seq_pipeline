@@ -8,7 +8,7 @@ def main(i, o, f, g, s, l):
         files = i
     else:
         with open(i) as ifile:
-            files = [line.strip() for line in ifile.readlines()]
+            files = sorted([line.strip() for line in ifile.readlines()])
     igv_session = {}
     igv_session['locus'] = l
     genome = {}
