@@ -16,11 +16,12 @@
 </head>
 
 <body>
-
+<div id="igv_div" style="padding-top: 50px;padding-bottom: 20px; height: auto">
+</div>
 <script type="text/javascript">
 
     document.addEventListener("DOMContentLoaded", function () {
-        var div = document.getElementById("myDiv");
+        var div = document.getElementById("igv_div");
         igv.createBrowser(div, 
                           {genome: "hg19",
                            queryParametersSupported: true, 
