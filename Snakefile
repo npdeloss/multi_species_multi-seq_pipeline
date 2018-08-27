@@ -77,7 +77,7 @@ rule www:
 
 rule www_from_source_dir:
     input:
-        targets_local = 'targets_local.txt'
+        **config['targets']
     output:
         directory(config['www']['dir'] + '{source_dir}')
     log:
