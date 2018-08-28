@@ -53,7 +53,7 @@ configfile: 'config.yaml'
 
 rule targets_local:
     input:
-        **config['targets']
+        *config['targets']
     output:
         'targets_local.txt'
     run:
@@ -78,7 +78,7 @@ rule www:
 
 rule www_from_source_dir:
     input:
-        **config['targets']
+        *config['targets']
     output:
         directory(config['www']['dir'] + '{source_dir}')
     log:
