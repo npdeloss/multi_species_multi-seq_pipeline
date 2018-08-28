@@ -51,18 +51,18 @@ include: 'snakefiles/track_visualizations.smk'
 
 configfile: 'config.yaml'
 
-rule targets_local:
+rule targets:
     input:
-        *config['targets']
+        **config['targets']
     output:
-        'targets_local.txt'
+        'targets'
     run:
         with open(output[0],'w') as outfile:
             outfile.write('\n'.join([inputfile for inputfile in input])+'\n')
 
 rule www:
     input:
-        targets_local = 'targets_local.txt', 
+        targets = 'targets', 
         dirs = lambda wildcards: [directory(config['www']['dir'] + source_dir) for source_dir in config['www']['source_dirs']],
         html = 'igv_js.html'
     output:
@@ -78,7 +78,7 @@ rule www:
 
 rule www_from_source_dir:
     input:
-        *config['targets']
+        **config['targets']
     output:
         directory(config['www']['dir'] + '{source_dir}')
     log:
