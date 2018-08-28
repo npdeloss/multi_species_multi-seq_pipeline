@@ -6,9 +6,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 To run this snakefile, you need only Snakemake and Conda/Miniconda. Future releases may require pandas for parsing datasheets.
-While the pipeline itself relies on many software packages, most notable Homer, these dependencies are handled using Snakemake's ability to specify and download conda environments for individual rules. This allows rules to depend on their own versions of packages, rather than relying on all package versions being compatible with each other across all rules.
+While the pipeline itself relies on many software packages, most notably [HOMER](http://homer.ucsd.edu/homer/), these dependencies are handled using Snakemake's ability to specify and download conda environments for individual rules. This allows rules to depend on their own versions of packages, rather than relying on all package versions being compatible with each other across all rules.
 
-Instructions on installing Conda can be found on its [Conda documentation page](https://conda.io/docs/user-guide/install/index.html).  
+Instructions on installing Conda can be found on its [Conda documentation page](https://conda.io/docs/user-guide/install/).  
 After installing Conda, Snakemake can be installed with Conda as follows:
 ```
 conda install -c bioconda snakemake 
@@ -45,7 +45,7 @@ mkdir -p fastq_files
 cp /your/directory/here/*.fastq.gz reads_fastq/
 ```
 
-### Calling Snakemake
+#### Calling Snakemake
 To use snakemake's dependency downloading capability through conda, invoke the pipeline using:
 ```
 snakemake --use-conda -j {threads} {target}
