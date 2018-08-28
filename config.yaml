@@ -8,7 +8,6 @@ www:
 targets:
     qc:
         - 'qc_fastqc/index.txt'
-    # Targets for human genome version GRCh38/hg38
     grch38:
         - 'tag_directories/human/grch38/index.txt'
         - 'gene_quantifications_kallisto/human/grch38/gene.tpm.rna.tsv'
@@ -25,7 +24,6 @@ targets:
         - 'track_visualizations_bigwigs/human/grch38/rna.igv.html'
         - 'track_visualizations_bigwigs/human/grch38/chip.igv.html'
         - 'tag_directories/human/grch37/index.txt'
-    # Targets for human genome version GRCh37/hg19
     grch37:
         - 'gene_quantifications_kallisto/human/grch37/gene.tpm.rna.tsv'
         - 'gene_quantifications_kallisto/human/grch37/gene.est_counts.rna.tsv'
@@ -40,7 +38,6 @@ targets:
         - 'track_visualizations_bigwigs/human/grch37/chip.igv.json'
         - 'track_visualizations_bigwigs/human/grch37/rna.igv.html'
         - 'track_visualizations_bigwigs/human/grch37/chip.igv.html'
-    # Targets for mouse genome version grcm38/mm10
     grcm38:
         - 'tag_directories/mouse/grcm38/index.txt'
         - 'gene_quantifications_kallisto/mouse/grcm38/gene.tpm.rna.tsv'
