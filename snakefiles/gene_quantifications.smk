@@ -13,6 +13,8 @@ def combine_quantification_tables(index_filepath, output_filepath, df_filepath_s
         combined_df = pd.DataFrame(series_by_sample).rename_axis(renamed_key_column).reset_index()
         combined_df.to_csv(output_filepath, sep = sep, index = False)
         return combined_df
+    else:
+        shell(f'touch {output_filepath}')
 
 # Include different quantification methods
 include: 'gene_quantifications_kallisto.smk'
