@@ -20,14 +20,12 @@ To install, copying `Snakefile`, `config.yaml`, and the `envs` folder from this 
 ### Usage
 #### Naming and depositing fastq files
 First, ensure your fastq files follow the appropriate naming scheme. The naming scheme should be as follows:  
-`[human/mouse]_{cell}_[rna/chip]_{library_subtype}-{description}_{initials}_[R1/R2]_001.fastq.gz`  
+`[human/mouse]_{cell}_[rna/chip]_{description}_{initials}_[R1/R2]_001.fastq.gz`  
 An example is:  
 `human_htbe_chip_h3k27ac-cond1-rep1_YC_R1_001.fastq.gz`  
 A few notes on these fields:
 * Currently, only human and mouse genomes are supported via GENCODE annotation.
 * Values for `{cell}` and `{libary_subtype}` are restricted to only be alphanumeric.
-* Input/Control ChIP-seq experiments should have `{library_subtype}` set to `input`
- * All ChIP-seq experiments should have their corresponding input/control have identical values for these fields except for the `{libary_subtype}`
 * The `{description}` may not include spaces or underscores.
 * The `{initials}` field refers to the individual who performed the experiment. This should be alphanumeric only.
 * Paired-end sequencing is detected by finding files with both `_R1_001.fastq.gz` and `_R2_001.fastq.gz` suffixes.
@@ -35,14 +33,13 @@ A few notes on these fields:
 If your data are not named in this manner, you can create symlinks to them like so:  
 `ln -sf [old_filename] [new_filename]`  
 
-To deposit files into this project for use with the pipeline, create a folder called `fastq_files` in the same directory as the Snakefile and copy them into there (symlinking is also an option).  
+To deposit files into this project for use with the pipeline, create a folder called `reads_fastq` in the same directory as the Snakefile and copy them into there (symlinking is also an option).  
 ```
 mkdir -p fastq_files
-cp /your/directory/here/*.fastq.gz fastq_files/
+cp /your/directory/here/*.fastq.gz reads_fastq/
 ```
 
 ### Calling Snakemake
-Use `config.yaml` to set the maximum number of threads to be used by a single job.  
 To use snakemake's dependency downloading capability through conda, invoke the pipeline using:
 ```
 snakemake --use-conda -j {threads} {target}
