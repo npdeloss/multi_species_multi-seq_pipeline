@@ -15,7 +15,13 @@ conda install -c bioconda snakemake
 ```
 
 ### Installing
-To install, copying `Snakefile`, `config.yaml`, and the `envs` folder from this repository will suffice. Put them in the same folder.
+To install, copying `Snakefile`, `config.yaml`, `igv_js.html`, `envs`, `configs`, `resources`, `scripts`, and `snakefiles` from this repository will suffice. Put them in the same folder. Alternatively, download this repository and rename as required.
+
+```
+git clone https://github.com/npdeloss/multi_species_multi-seq_pipeline.git
+mv multi_species_multi-seq_pipeline your_project_name
+cd your_project_name
+```
 
 ### Usage
 #### Naming and depositing fastq files
@@ -25,7 +31,7 @@ An example is:
 `human_htbe_chip_h3k27ac-cond1-rep1_YC_R1_001.fastq.gz`  
 A few notes on these fields:
 * Currently, only human and mouse genomes are supported via GENCODE annotation.
-* Values for `{cell}` and `{libary_subtype}` are restricted to only be alphanumeric.
+* Values for `{cell}` and `{libary_type}` may not contain underscores or slashes.
 * The `{description}` may not include spaces or underscores.
 * The `{initials}` field refers to the individual who performed the experiment. This should be alphanumeric only.
 * Paired-end sequencing is detected by finding files with both `_R1_001.fastq.gz` and `_R2_001.fastq.gz` suffixes.
@@ -45,3 +51,23 @@ To use snakemake's dependency downloading capability through conda, invoke the p
 snakemake --use-conda -j {threads} {target}
 ```
 Where `threads` is the number of threads you wish to use, and `{target}` is the name of the target file. More on these later.
+
+#### Quick targets
+To run all available analyses automatically, run:
+```
+snakemake --use-conda -j {threads} targets
+```
+
+You may need to remove the `targets` file if it has already been generated:
+```
+rm targets
+```
+
+#### Web browser targets
+Change the second line of `config.yaml` to reflect the directory where your server stores files on your project to serve to web browsers. This is usually `/var/www/html/your_project_name`. Change the third line to reflect the URL where your project will be served to the web. Usually, this is `http://your.domain.com/your_project_name`.
+
+```
+www:
+    dir: '/var/www/html/your_project_name/`'
+    url: 'http://your.domain.com/your_project_name/'
+```
