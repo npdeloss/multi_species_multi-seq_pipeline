@@ -51,6 +51,10 @@ include: 'snakefiles/track_visualizations.smk'
 
 configfile: 'config.yaml'
 
+rule all:
+    input:
+        'targets'
+
 rule targets:
     input:
         **config['targets']
