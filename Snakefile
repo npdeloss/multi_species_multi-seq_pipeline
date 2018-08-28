@@ -27,13 +27,13 @@ def get_read_basenames_for_organism(organism, library_type = None,
     wc_dict = dict(glob_wildcards(reads_pattern)._asdict())
     # If we aren't looking for any organism in particular, just return all the basenames
     if organism is None:
-        return expand(basename_pattern, zip, **wc_dict)
+        return sorted(expand(basename_pattern, zip, **wc_dict))
     # Filter only for wildcard values at indices where the organism matches our argument
     organism_index = [organism_entry == organism for organism_entry in wc_dict['organism']]
     wc_dict_for_organism = {key: list(compress(wc_dict[key], organism_index)) for key in wc_dict}
     # If we aren't asking for a specific libary type, expand the basenames out with the filtered wildcards and return them
     if library_type is None:
-        return expand(basename_pattern, zip, **wc_dict_for_organism)
+        return sorted(expand(basename_pattern, zip, **wc_dict_for_organism))
     # Otherwise, filter for wildcards with matching library types too
     library_type_index = [library_type_entry == library_type for library_type_entry in wc_dict_for_organism['library_type']]
     wc_dict_for_library_type = {key: list(compress(wc_dict_for_organism[key], library_type_index)) for key in wc_dict_for_organism}
@@ -72,6 +72,7 @@ rule www:
         """
         mkdir -p $(dirname {output.igv_js})
         cp {input.html} {output.igv_js}
+        cp *.html $(dirname {output.igv_js})
         touch {output.www}
         """
 
