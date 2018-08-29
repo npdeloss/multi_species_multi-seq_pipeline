@@ -9,6 +9,7 @@ def main(i, o, f, g, s, l):
     else:
         with open(i) as ifile:
             files = sorted([line.strip() for line in ifile.readlines()])
+            files = sorted([file for file in files if file is not ''])
     igv_session = {}
     igv_session['locus'] = l
     genome = {}
@@ -27,19 +28,22 @@ def main(i, o, f, g, s, l):
     simple_annotation['url'] = s
     simple_annotation['searchable'] = True
     igv_session['reference'] = genome
-    track_filenames = files
-    track_names = [track.split('/')[-1] for track in track_filenames]
-    track_colors = sns.hls_palette(len(track_filenames)).as_hex()
-    tracks = []
-    for name, filename, color in zip(track_names, track_filenames, track_colors):
-        track = {}
-        track['url'] = filename
-        track['name'] = name
-        track['color'] = color
-        track['autoscaleGroup'] = '1'
-        track['height'] = 100
-        tracks.append(track)
-    igv_session['tracks'] = [simple_annotation, annotation] + tracks
+    if len(files) > 0:
+        track_filenames = files
+        track_names = [track.split('/')[-1] for track in track_filenames]
+        track_colors = sns.hls_palette(len(track_filenames)).as_hex()
+        tracks = []
+        for name, filename, color in zip(track_names, track_filenames, track_colors):
+            track = {}
+            track['url'] = filename
+            track['name'] = name
+            track['color'] = color
+            track['autoscaleGroup'] = '1'
+            track['height'] = 100
+            tracks.append(track)
+        igv_session['tracks'] = [simple_annotation, annotation] + tracks
+    else:
+        igv_session['tracks'] = [simple_annotation, annotation]
     with open(o, 'w') as out:
         out.write(json.dumps(igv_session, sort_keys=True, indent=4))
 
