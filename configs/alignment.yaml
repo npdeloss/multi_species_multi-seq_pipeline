@@ -2,13 +2,13 @@ alignment:
     spliced: 'star'
     unspliced: 'bowtie2'
     sort:
-        threads: 16
+        threads: 8
         params:
             options: '-l 9 -m 4G'
     star:
         prefix: 'alignment_star/{organism}/{reference}/'
         input_prefix: 'preprocessing_fastp/'
-        threads: 16
+        threads: 40
         read_files_command: 'zcat'
         index:
             prefix: 'genomes/{organism}/{reference}/star/'
@@ -25,7 +25,7 @@ alignment:
     bowtie2:
         prefix: 'alignment_bowtie2/{organism}/{reference}/'
         input_prefix: 'preprocessing_fastp/'
-        threads: 16
+        threads: 8
         index:
             prefix: 'genomes/{organism}/{reference}/bowtie2/'
             input_prefix: 'genomes/{organism}/{reference}/'
