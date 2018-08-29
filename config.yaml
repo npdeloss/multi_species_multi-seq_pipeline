@@ -7,26 +7,35 @@ www:
         - 'bigwigs_homer'
 targets:
     qc:
+        # Generate FASTQC reports for all samples
         - 'qc_fastqc/index.txt'
     # Targets for human genome version GRCh38/hg38
     human/grch38:
+        # Generate all tag directories with HOMER.
+        # If the library_type is chip, align with bowtie2.
+        # If library_type is rna, align with STAR
         - 'tag_directories/human/grch38/index.txt'
+        # Gene quantifications using kallisto for all samples with rna library_type
         - 'gene_quantifications_kallisto/human/grch38/gene.tpm.rna.tsv'
         - 'gene_quantifications_kallisto/human/grch38/gene.est_counts.rna.tsv'
+        # Gene quantifications using HOMER for all samples with rna library_type
         - 'gene_quantifications_homer/human/grch38/gene.raw.rna.tsv'
         - 'gene_quantifications_homer/human/grch38/gene.norm.rna.tsv'
         - 'gene_quantifications_homer/human/grch38/gene.rpkm.rna.tsv'
+        # Bigwig coverage tracks using HOMER for all samples with rna library_type
         - 'bigwigs_homer/human/grch38/index.pos.rna.txt'
         - 'bigwigs_homer/human/grch38/index.neg.rna.txt'
         - 'bigwigs_homer/human/grch38/index.rna.txt'
+        # Bigwig coverage tracks using HOMER for all samples with chip library_type
         - 'bigwigs_homer/human/grch38/index.chip.txt'
+        # JSON and HTML for visualizing the bigwig coverage tracks using IGV.js
         - 'track_visualizations_bigwigs/human/grch38/rna.igv.json'
         - 'track_visualizations_bigwigs/human/grch38/chip.igv.json'
         - 'track_visualizations_bigwigs/human/grch38/rna.igv.html'
         - 'track_visualizations_bigwigs/human/grch38/chip.igv.html'
-        - 'tag_directories/human/grch37/index.txt'
     # Targets for human genome version GRCh37/hg19
     human/grch37:
+        - 'tag_directories/human/grch37/index.txt'
         - 'gene_quantifications_kallisto/human/grch37/gene.tpm.rna.tsv'
         - 'gene_quantifications_kallisto/human/grch37/gene.est_counts.rna.tsv'
         - 'gene_quantifications_homer/human/grch37/gene.raw.rna.tsv'

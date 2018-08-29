@@ -68,6 +68,61 @@ Change the second line of `config.yaml` to reflect the directory where your serv
 
 ```
 www:
-    dir: '/var/www/html/your_project_name/`'
+    dir: '/var/www/html/your_project_name/'
     url: 'http://your.domain.com/your_project_name/'
+```
+
+#### Targets in detail
+In `config.yaml`, the `targets` object contains lists of targets that will be created by the pipeline by default when running analyses automatically. These are decribed within config.yaml for the `human/grch38` organism/reference combination.
+
+##### Generate FASTQC reports for all samples
+If the library_type is chip, align with bowtie2. If library_type is rna, align with STAR.
+```
+qc_fastqc/index.txt
+```
+
+##### Gene quantifications using kallisto
+Quantifies gene expression for all samples with `rna` `library_type`.
+```
+# TPM for basic normalization
+gene_quantifications_kallisto/human/grch38/gene.tpm.rna.tsv
+# Estimated counts, for use with programs expecting count-like data.
+gene_quantifications_kallisto/human/grch38/gene.est_counts.rna.tsv
+```
+##### Gene quantifications using HOMER for all samples with rna library_type
+Quantifies gene expression for all samples with `rna` `library_type`.
+```
+# Read counts
+gene_quantifications_homer/human/grch38/gene.raw.rna.tsv
+# Reads normalized to 1e7 by default
+gene_quantifications_homer/human/grch38/gene.norm.rna.tsv
+# Expression normalized with RPKM
+gene_quantifications_homer/human/grch38/gene.rpkm.rna.tsv
+```
+##### Bigwig coverage tracks using HOMER
+For all samples with rna library_type
+```
+# Positive strand
+bigwigs_homer/human/grch38/index.pos.rna.txt
+# Negative strand
+bigwigs_homer/human/grch38/index.neg.rna.txt
+# Both strands
+bigwigs_homer/human/grch38/index.rna.txt
+```
+
+For all samples with chip library_type
+```
+bigwigs_homer/human/grch38/index.chip.txt
+```
+
+##### JSON and HTML for visualizing the bigwig coverage tracks using IGV.js
+These only work when served from a server. Paths are relative to the `dir` property of the `www` section from `config.yaml`
+For example, if the `dir` property was set to `/var/www/html/your_project_name/`, and the `url` propery was set to `http://your.domain.com/your_project_name/`, then you would point your browser to `http://your.domain.com/your_project_name/track_visualizations_bigwigs/human/grch38/chip.igv.html` to visualize coverage for your ChIP-seq tracks.
+```
+# JSON track data
+track_visualizations_bigwigs/human/grch38/rna.igv.json
+track_visualizations_bigwigs/human/grch38/chip.igv.json
+# HTML page
+track_visualizations_bigwigs/human/grch38/rna.igv.html
+track_visualizations_bigwigs/human/grch38/chip.igv.html
 ```
