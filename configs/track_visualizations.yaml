@@ -1,8 +1,16 @@
+# Settings for track visualizations
 track_visualizations:
+    # Settings for igv.js json files
     igv_js:
+        # Settings for visualizing bigwigs
         bigwigs:
+            # Load bigwig filenames from these input files
             input: 'bigwigs_homer/{organism}/{reference}/index.{basename}.txt'
+            # Output JSON into these files
             output: 'track_visualizations_bigwigs/{organism}/{reference}/{basename}.igv.json'
+            # Generated igv.js redirect goes here
             html: 'track_visualizations_bigwigs/{organism}/{reference}/{basename}.igv.html'
+        # igv.js redirection html template
         session_redirect_template: 'resources/igv_js_redirect.html'
+        # Replace this string in the template with the path to the JSON file
         session_redirect_string: '$SESSION_URL$'

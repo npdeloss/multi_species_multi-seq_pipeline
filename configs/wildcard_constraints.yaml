@@ -1,3 +1,4 @@
+# Wildcard constraints for common wildcard names used globally by the snakefile and these config files
 wildcard_constraints:
     basename: '[^\/]+'
     organism: '[^\/_]+'
