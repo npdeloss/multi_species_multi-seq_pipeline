@@ -73,12 +73,16 @@ www:
 ```
 
 #### Targets in detail
-In `config.yaml`, the `targets` object contains lists of targets that will be created by the pipeline by default when running analyses automatically. These are decribed within config.yaml for the `human/grch38` organism/reference combination.
+In `config.yaml`, the `targets` object contains lists of targets that will be created by the pipeline by default when running analyses automatically. These are decribed within config.yaml for the `human/grch38` `{organism}/{reference}` combination. The string `human/grch38` in these target filepaths can be replaced with `human/grch37` and `mouse/grcm38` as needed for your project, but by default, all targets are run for all three of these `{organism}/{reference}` combinations.
 
 ##### Generate FASTQC reports for all samples
-If the library_type is chip, align with bowtie2. If library_type is rna, align with STAR.
 ```
 qc_fastqc/index.txt
+```
+##### Generate all tag directories with HOMER
+If the library_type is chip, align with bowtie2. If library_type is rna, align with STAR.
+```
+tag_directories/human/grch38/index.txt
 ```
 
 ##### Gene quantifications using kallisto

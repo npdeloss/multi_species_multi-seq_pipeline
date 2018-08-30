@@ -2,7 +2,7 @@ alignment:
     spliced: 'star'
     unspliced: 'bowtie2'
     sort:
-        threads: 8
+        threads: 40
         params:
             options: '-l 9 -m 4G'
     star:
@@ -13,7 +13,7 @@ alignment:
         index:
             prefix: 'genomes/{organism}/{reference}/star/'
             input_prefix: 'genomes/{organism}/{reference}/'
-            threads: 4
+            threads: 40
             params:
                 options: ''
         paired_end:
@@ -25,7 +25,7 @@ alignment:
     bowtie2:
         prefix: 'alignment_bowtie2/{organism}/{reference}/'
         input_prefix: 'preprocessing_fastp/'
-        threads: 8
+        threads: 40
         index:
             prefix: 'genomes/{organism}/{reference}/bowtie2/'
             input_prefix: 'genomes/{organism}/{reference}/'
