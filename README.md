@@ -18,8 +18,7 @@ conda install -c bioconda snakemake
 To install, copying `Snakefile`, `config.yaml`, `igv_js.html`, `envs`, `configs`, `resources`, `scripts`, and `snakefiles` from this repository will suffice. Put them in the same folder. Alternatively, download this repository and rename as required.
 
 ```
-git clone https://github.com/npdeloss/multi_species_multi-seq_pipeline.git
-mv multi_species_multi-seq_pipeline your_project_name
+git clone https://github.com/npdeloss/multi_species_multi-seq_pipeline.git your_project_name
 cd your_project_name
 ```
 
