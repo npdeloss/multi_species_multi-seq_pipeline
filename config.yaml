@@ -28,40 +28,68 @@ targets:
         - 'bigwigs_homer/human/grch38/index.rna.txt'
         # Bigwig coverage tracks using HOMER for all samples with chip library_type
         - 'bigwigs_homer/human/grch38/index.chip.txt'
+        # Bigwig coverage tracks using HOMER for all samples with start library_type
+        - 'bigwigs_homer/human/grch38/index.start.txt'
         # JSON and HTML for visualizing the bigwig coverage tracks using IGV.js
         - 'track_visualizations_bigwigs/human/grch38/rna.igv.json'
         - 'track_visualizations_bigwigs/human/grch38/chip.igv.json'
+        - 'track_visualizations_bigwigs/human/grch38/start.igv.json'
         - 'track_visualizations_bigwigs/human/grch38/rna.igv.html'
         - 'track_visualizations_bigwigs/human/grch38/chip.igv.html'
+        - 'track_visualizations_bigwigs/human/grch38/start.igv.html'
     # Targets for human genome version GRCh37/hg19
     human/grch37:
+        # Generate all tag directories with HOMER.
+        # If the library_type is chip, align with bowtie2.
+        # If library_type is rna, align with STAR
         - 'tag_directories/human/grch37/index.txt'
+        # Gene quantifications using kallisto for all samples with rna library_type
         - 'gene_quantifications_kallisto/human/grch37/gene.tpm.rna.tsv'
         - 'gene_quantifications_kallisto/human/grch37/gene.est_counts.rna.tsv'
+        # Gene quantifications using HOMER for all samples with rna library_type
         - 'gene_quantifications_homer/human/grch37/gene.raw.rna.tsv'
         - 'gene_quantifications_homer/human/grch37/gene.norm.rna.tsv'
         - 'gene_quantifications_homer/human/grch37/gene.rpkm.rna.tsv'
+        # Bigwig coverage tracks using HOMER for all samples with rna library_type
         - 'bigwigs_homer/human/grch37/index.pos.rna.txt'
         - 'bigwigs_homer/human/grch37/index.neg.rna.txt'
         - 'bigwigs_homer/human/grch37/index.rna.txt'
+        # Bigwig coverage tracks using HOMER for all samples with chip library_type
         - 'bigwigs_homer/human/grch37/index.chip.txt'
+        # Bigwig coverage tracks using HOMER for all samples with start library_type
+        - 'bigwigs_homer/human/grch37/index.start.txt'
+        # JSON and HTML for visualizing the bigwig coverage tracks using IGV.js
         - 'track_visualizations_bigwigs/human/grch37/rna.igv.json'
         - 'track_visualizations_bigwigs/human/grch37/chip.igv.json'
+        - 'track_visualizations_bigwigs/human/grch37/start.igv.json'
         - 'track_visualizations_bigwigs/human/grch37/rna.igv.html'
         - 'track_visualizations_bigwigs/human/grch37/chip.igv.html'
-    # Targets for mouse genome version grcm38/mm10
+        - 'track_visualizations_bigwigs/human/grch37/start.igv.html    
+        # Targets for mouse genome version grcm38/mm10
     mouse/grcm38:
+        # Generate all tag directories with HOMER.
+        # If the library_type is chip, align with bowtie2.
+        # If library_type is rna, align with STAR
         - 'tag_directories/mouse/grcm38/index.txt'
+        # Gene quantifications using kallisto for all samples with rna library_type
         - 'gene_quantifications_kallisto/mouse/grcm38/gene.tpm.rna.tsv'
         - 'gene_quantifications_kallisto/mouse/grcm38/gene.est_counts.rna.tsv'
+        # Gene quantifications using HOMER for all samples with rna library_type
         - 'gene_quantifications_homer/mouse/grcm38/gene.raw.rna.tsv'
         - 'gene_quantifications_homer/mouse/grcm38/gene.norm.rna.tsv'
         - 'gene_quantifications_homer/mouse/grcm38/gene.rpkm.rna.tsv'
+        # Bigwig coverage tracks using HOMER for all samples with rna library_type
         - 'bigwigs_homer/mouse/grcm38/index.pos.rna.txt'
         - 'bigwigs_homer/mouse/grcm38/index.neg.rna.txt'
         - 'bigwigs_homer/mouse/grcm38/index.rna.txt'
+        # Bigwig coverage tracks using HOMER for all samples with chip library_type
         - 'bigwigs_homer/mouse/grcm38/index.chip.txt'
+        # Bigwig coverage tracks using HOMER for all samples with start library_type
+        - 'bigwigs_homer/mouse/grcm38/index.start.txt'
+        # JSON and HTML for visualizing the bigwig coverage tracks using IGV.js
         - 'track_visualizations_bigwigs/mouse/grcm38/rna.igv.json'
         - 'track_visualizations_bigwigs/mouse/grcm38/chip.igv.json'
+        - 'track_visualizations_bigwigs/mouse/grcm38/start.igv.json'
         - 'track_visualizations_bigwigs/mouse/grcm38/rna.igv.html'
         - 'track_visualizations_bigwigs/mouse/grcm38/chip.igv.html'
+        - 'track_visualizations_bigwigs/mouse/grcm38/start.igv.html
