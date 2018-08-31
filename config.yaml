@@ -64,7 +64,7 @@ targets:
         - 'track_visualizations_bigwigs/human/grch37/start.igv.json'
         - 'track_visualizations_bigwigs/human/grch37/rna.igv.html'
         - 'track_visualizations_bigwigs/human/grch37/chip.igv.html'
-        - 'track_visualizations_bigwigs/human/grch37/start.igv.html    
+        - 'track_visualizations_bigwigs/human/grch37/start.igv.html'
         # Targets for mouse genome version grcm38/mm10
     mouse/grcm38:
         # Generate all tag directories with HOMER.
@@ -92,4 +92,4 @@ targets:
         - 'track_visualizations_bigwigs/mouse/grcm38/start.igv.json'
         - 'track_visualizations_bigwigs/mouse/grcm38/rna.igv.html'
         - 'track_visualizations_bigwigs/mouse/grcm38/chip.igv.html'
-        - 'track_visualizations_bigwigs/mouse/grcm38/start.igv.html
+        - 'track_visualizations_bigwigs/mouse/grcm38/start.igv.html'
