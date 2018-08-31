@@ -19,3 +19,12 @@ tag_directories:
                 input_prefix: 'alignment_bowtie2/{organism}/{reference}/'
                 params:
                     options: ''
+        start:
+            paired_end:
+                input_prefix: 'alignment_bowtie2/{organism}/{reference}/'
+                params:
+                    options: ''
+            single_end:
+                input_prefix: 'alignment_bowtie2/{organism}/{reference}/'
+                params:
+                    options: ''
