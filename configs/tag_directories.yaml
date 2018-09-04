@@ -14,17 +14,17 @@ tag_directories:
             paired_end:
                 input_prefix: 'alignment_bowtie2/{organism}/{reference}/'
                 params:
-                    options: ''
+                    options: '-tbp 1'
             single_end:
                 input_prefix: 'alignment_bowtie2/{organism}/{reference}/'
                 params:
-                    options: ''
+                    options: '-tbp 1'
         start:
             paired_end:
                 input_prefix: 'alignment_bowtie2/{organism}/{reference}/'
                 params:
-                    options: ''
+                    options: '-tbp 1'
             single_end:
                 input_prefix: 'alignment_bowtie2/{organism}/{reference}/'
                 params:
-                    options: ''
+                    options: '-tbp 1'
