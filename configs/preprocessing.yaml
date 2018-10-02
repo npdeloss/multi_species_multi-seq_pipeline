@@ -6,7 +6,7 @@ preprocessing:
         paired_end:
             adapter_r1: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
             adapter_r2: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT'
-            options: ''
+            options: '--cut_by_quality3'
         single_end:
             adapter: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
-            options: ''
+            options: '--cut_by_quality3'
