@@ -1,4 +1,5 @@
 www:
+    # Change these to your own dir and URL
     dir: '/var/www/html/your_project_name/'
     url: 'http://your.domain.com/your_project_name/'
     source_dirs:
