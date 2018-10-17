@@ -3,5 +3,6 @@ channels:
  - bioconda
  - conda-forge
 dependencies:
- - bowtie2=2.2.5=py36h2d50403_3
- - samtools=1.7=1
+ - bowtie2=2.2.5
+ - samtools=1.7
+ - ncurses
