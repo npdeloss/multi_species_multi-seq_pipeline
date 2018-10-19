@@ -4,9 +4,10 @@ preprocessing:
         prefix: 'preprocessing_fastp/'
         threads: 1
         paired_end:
-            adapter_r1: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
-            adapter_r2: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT'
+            adapter_r1: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCA'
+            adapter_r2: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT'
             options: '--cut_by_quality3'
         single_end:
-            adapter: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+            # Illumina DpnII expression Sequencing Primer was reported by fastqc, removing, fastp saw little adapter sequence.
+            adapter: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCA'
             options: '--cut_by_quality3'
