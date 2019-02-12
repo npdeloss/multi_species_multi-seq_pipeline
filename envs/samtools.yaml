@@ -1,6 +1,6 @@
 channels:
- - defaults
- - bioconda
- - conda-forge
+  - conda-forge
+  - bioconda
+  - defaults
 dependencies:
- - samtools=1.7=1
+ - samtools=1.7
